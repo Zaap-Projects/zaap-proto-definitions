@@ -6,7 +6,7 @@
   </a>
 </div>
 
-<h3 align="center">NestJS npm Package Starter</h3>
+<h3 align="center">Zaap-proto definitions</h3>
 
 <div align="center">
   <a href="https://nestjs.com" target="_blank">
@@ -16,13 +16,11 @@
 
 ### Installation
 
-1. Clone the repo
-2. Run npm/yarn install
-
-```bash
-cd nestjs-package-starter
-npm install
-```
+# clone the remote repository
+$ git clone [repository](https://github.com/chrisoftech/proto-definitions.git) .
+ 
+# switch to the specific tag
+$ git checkout tags/<tagname>
 
 ## Change Log
 
