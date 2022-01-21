@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "src/proto/phone_number.proto";
+
+package userService;
+
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {};
+}
+
+message CreateUserRequest {
+    string firstname = 1;
+    string lastname = 2;
+    PhoneNumber phoneNumber = 3;
+    string email = 4;
+    string password = 5;
+}
+
+message CreateUserResponse {
+    string id = 1;
+    string firstname = 2;
+    string lastname = 3;
+    PhoneNumber phoneNumber = 4;
+    string email = 5;
+    string createdAt = 6;
+    string updatedAt = 7;
+}
+

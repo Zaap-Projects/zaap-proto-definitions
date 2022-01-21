@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message PhoneNumber {
+    string country = 1;
+    string number = 2;
+}

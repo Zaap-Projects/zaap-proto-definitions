@@ -11,6 +11,7 @@
     "*.md"
   ],
   "scripts": {
+    "gen-proto": "./scripts/gen-all-lang-proto.bash",
     "start:dev": "tsc -w",
     "build": "tsc",
     "prepare": "npm run build",
@@ -30,7 +31,9 @@
   "peerDependencies": {
     "@nestjs/common": "^6.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ts-proto": "^1.103.0"
+  },
   "devDependencies": {
     "@nestjs/common": "^8.2.6",
     "@nestjs/core": "^8.2.6",
