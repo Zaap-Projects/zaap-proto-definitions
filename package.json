@@ -5,7 +5,7 @@
   "author": "Christian Onwe <chrisoftech@gmail.com>",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "main": "dist/test.js",
+  "main": "dist/index.js",
   "files": [
     "dist/**/*",
     "*.md"
@@ -29,9 +29,11 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@nestjs/common": "^6.0.0"
+    "@nestjs/common": "^8.2.6"
   },
   "dependencies": {
+    "@nestjs/microservices": "^8.2.6",
+    "rxjs": "^7.5.2",
     "ts-proto": "^1.103.0"
   },
   "devDependencies": {
