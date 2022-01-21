@@ -1,11 +1,16 @@
 syntax = "proto3";
 
-import "src/proto/phone_number.proto";
+// import "src/proto/phone_number.proto";
 
 package userService;
 
 service UserService {
     rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {};
+}
+
+message PhoneNumber {
+    string country = 1;
+    string number = 2;
 }
 
 message CreateUserRequest {
@@ -25,4 +30,3 @@ message CreateUserResponse {
     string createdAt = 6;
     string updatedAt = 7;
 }
-
