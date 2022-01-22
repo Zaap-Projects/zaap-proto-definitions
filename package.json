@@ -32,6 +32,7 @@
     "@nestjs/common": "^8.2.6"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.5.3",
     "@nestjs/microservices": "^8.2.6",
     "rxjs": "^7.5.2",
     "ts-proto": "^1.103.0"
