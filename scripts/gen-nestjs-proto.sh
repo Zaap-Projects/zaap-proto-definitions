@@ -10,7 +10,7 @@ generate_nestjs_proto_definitions() {
     mkdir ./src/proto/nestjs
 
     # generate definitions
-    protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=nestJs=true --ts_proto_out=./src/proto/nestjs ./src/proto/user.proto
+    protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=nestJs=true --ts_proto_out=./src/proto/nestjs ./src/proto/user.proto
 }
 
 #TODO: automate scripts

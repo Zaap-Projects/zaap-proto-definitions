@@ -3,6 +3,7 @@ import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
 import { Observable } from 'rxjs';
+import { Metadata } from '@grpc/grpc-js';
 
 export const protobufPackage = 'userService';
 
@@ -32,12 +33,16 @@ export interface CreateUserResponse {
 export const USER_SERVICE_PACKAGE_NAME = 'userService';
 
 export interface UserServiceClient {
-  createUser(request: CreateUserRequest): Observable<CreateUserResponse>;
+  createUser(
+    request: CreateUserRequest,
+    metadata?: Metadata,
+  ): Observable<CreateUserResponse>;
 }
 
 export interface UserServiceController {
   createUser(
     request: CreateUserRequest,
+    metadata?: Metadata,
   ):
     | Promise<CreateUserResponse>
     | Observable<CreateUserResponse>
