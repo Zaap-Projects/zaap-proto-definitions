@@ -3,14 +3,10 @@ import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
 import { Observable } from 'rxjs';
+import { PhoneNumber } from '../../src/proto/phone_number';
 import { Metadata } from '@grpc/grpc-js';
 
 export const protobufPackage = 'userService';
-
-export interface PhoneNumber {
-  country: string;
-  number: string;
-}
 
 export interface CreateUserRequest {
   firstname: string;

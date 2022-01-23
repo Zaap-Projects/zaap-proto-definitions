@@ -39,7 +39,7 @@ export interface SignupAccountRequest {
 }
 
 export interface SignupAccountResponse {
-  createUserResponse: UserEntity | undefined;
+  user: UserEntity | undefined;
 }
 
 export const AUTH_SERVICE_PACKAGE_NAME = 'authService';
