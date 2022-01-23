@@ -4,7 +4,7 @@ import "src/proto/user.proto";
 
 package authService;
 
-service UserService {
+service AuthService {
     rpc Token(TokensRequest) returns (TokensEntity) {};
     rpc Login(LoginRequest) returns (LoginResponse) {};
     rpc Signup(SignupAccountRequest) returns (SignupAccountResponse) {};
