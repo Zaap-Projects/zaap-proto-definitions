@@ -20,7 +20,7 @@ export interface CreateUserRequest {
   password: string;
 }
 
-export interface CreateUserResponse {
+export interface UserEntity {
   id: string;
   firstname: string;
   lastname: string;
@@ -36,17 +36,14 @@ export interface UserServiceClient {
   createUser(
     request: CreateUserRequest,
     metadata?: Metadata,
-  ): Observable<CreateUserResponse>;
+  ): Observable<UserEntity>;
 }
 
 export interface UserServiceController {
   createUser(
     request: CreateUserRequest,
     metadata?: Metadata,
-  ):
-    | Promise<CreateUserResponse>
-    | Observable<CreateUserResponse>
-    | CreateUserResponse;
+  ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 }
 
 export function UserServiceControllerMethods() {

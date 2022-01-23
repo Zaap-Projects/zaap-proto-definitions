@@ -5,7 +5,7 @@ syntax = "proto3";
 package userService;
 
 service UserService {
-    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {};
+    rpc CreateUser(CreateUserRequest) returns (UserEntity) {};
 }
 
 message PhoneNumber {
@@ -21,7 +21,7 @@ message CreateUserRequest {
     string password = 5;
 }
 
-message CreateUserResponse {
+message UserEntity {
     string id = 1;
     string firstname = 2;
     string lastname = 3;

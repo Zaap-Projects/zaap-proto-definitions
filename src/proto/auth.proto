@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+import "src/proto/user.proto";
+
+package authService;
+
+service UserService {
+    rpc Token(TokensRequest) returns (TokensEntity) {};
+    rpc Login(LoginRequest) returns (LoginResponse) {};
+    rpc Signup(SignupAccountRequest) returns (SignupAccountResponse) {};
+}
+
+// generic entities
+message TokensEntity {
+    string access = 1;
+    string refresh = 2;
+}
+
+// token messages
+message TokensRequest {
+    string refreshToken = 1;
+}
+
+// login messages
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    TokensEntity tokens = 1;
+    userService.UserEntity user = 2;
+}
+
+// signup messages
+// TODO: add other params eg. CreateCourierRequest, CreateFleetRequest
+message SignupAccountRequest {
+    oneof params_oneof {
+        userService.CreateUserRequest createUserRequest = 1;
+    }
+}
+
+message SignupAccountResponse {
+    oneof params_oneof {
+        userService.UserEntity createUserResponse = 1;
+    }
+}
