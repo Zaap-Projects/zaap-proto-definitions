@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package phoneNumber;
+
 message PhoneNumber {
     string country = 1;
     string number = 2;
