@@ -42,6 +42,6 @@ message SignupAccountRequest {
 
 message SignupAccountResponse {
     oneof params_oneof {
-        userService.UserEntity createUserResponse = 1;
+        userService.UserEntity user = 1;
     }
 }
