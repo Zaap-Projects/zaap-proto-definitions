@@ -44,7 +44,7 @@ export interface SignupAccountResponse {
 
 export const AUTH_SERVICE_PACKAGE_NAME = 'authService';
 
-export interface UserServiceClient {
+export interface AuthServiceClient {
   token(request: TokensRequest, metadata?: Metadata): Observable<TokensEntity>;
 
   login(request: LoginRequest, metadata?: Metadata): Observable<LoginResponse>;
@@ -55,7 +55,7 @@ export interface UserServiceClient {
   ): Observable<SignupAccountResponse>;
 }
 
-export interface UserServiceController {
+export interface AuthServiceController {
   token(
     request: TokensRequest,
     metadata?: Metadata,
@@ -75,7 +75,7 @@ export interface UserServiceController {
     | SignupAccountResponse;
 }
 
-export function UserServiceControllerMethods() {
+export function AuthServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = ['token', 'login', 'signup'];
     for (const method of grpcMethods) {
@@ -83,7 +83,7 @@ export function UserServiceControllerMethods() {
         constructor.prototype,
         method,
       );
-      GrpcMethod('UserService', method)(
+      GrpcMethod('AuthService', method)(
         constructor.prototype[method],
         method,
         descriptor,
@@ -95,7 +95,7 @@ export function UserServiceControllerMethods() {
         constructor.prototype,
         method,
       );
-      GrpcStreamMethod('UserService', method)(
+      GrpcStreamMethod('AuthService', method)(
         constructor.prototype[method],
         method,
         descriptor,
@@ -104,7 +104,7 @@ export function UserServiceControllerMethods() {
   };
 }
 
-export const USER_SERVICE_NAME = 'UserService';
+export const AUTH_SERVICE_NAME = 'AuthService';
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',
 // add '--ts_proto_opt=esModuleInterop=true' as a flag when calling 'protoc'.
