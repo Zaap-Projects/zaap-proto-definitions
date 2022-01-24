@@ -35,8 +35,6 @@ export interface UpdateUserRequest {
   id: string;
   firstname: string;
   lastname: string;
-  phoneNumber: PhoneNumber | undefined;
-  email: string;
 }
 
 export const USER_SERVICE_PACKAGE_NAME = 'userService';
