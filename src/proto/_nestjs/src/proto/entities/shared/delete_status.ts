@@ -8,6 +8,7 @@ export const protobufPackage = '';
 export interface DeleteStatus {
   message: string;
   deleted: IdParamsList[];
+  notFound: IdParamsList[];
   failed: IdParamsList[];
 }
 
