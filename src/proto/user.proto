@@ -15,7 +15,7 @@ service UserService {
     rpc GetMultipleUsers(QueryParamsUsers) returns (UserEntityList) {};
     rpc CreateUser(CreateUserRequest) returns (UserEntity) {};
     rpc UpdateUser(UpdateUserRequest) returns (UserEntity) {};
-    rpc DeleteUser(IdParamsList) returns (DeleteStatus) {};
+    rpc DeleteUsers(IdParamsList) returns (DeleteStatus) {};
 }
 
 // get-user-by-username messages

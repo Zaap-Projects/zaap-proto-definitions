@@ -66,7 +66,7 @@ export interface UserServiceClient {
     metadata?: Metadata,
   ): Observable<UserEntity>;
 
-  deleteUser(
+  deleteUsers(
     request: IdParamsList,
     metadata?: Metadata,
   ): Observable<DeleteStatus>;
@@ -101,7 +101,7 @@ export interface UserServiceController {
     metadata?: Metadata,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
-  deleteUser(
+  deleteUsers(
     request: IdParamsList,
     metadata?: Metadata,
   ): Promise<DeleteStatus> | Observable<DeleteStatus> | DeleteStatus;
@@ -115,7 +115,7 @@ export function UserServiceControllerMethods() {
       'getMultipleUsers',
       'createUser',
       'updateUser',
-      'deleteUser',
+      'deleteUsers',
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(
