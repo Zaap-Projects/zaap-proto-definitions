@@ -11,3 +11,4 @@ export * as empty_value_definitions from './proto/_nestjs/src/proto/entities/sha
 export * as id_params_definitions from './proto/_nestjs/src/proto/entities/shared/id_params';
 export * as list_meta_definitions from './proto/_nestjs/src/proto/entities/shared/list_meta';
 export * as phone_number_definitions from './proto/_nestjs/src/proto/entities/shared/phone_number';
+export * as query_params_users_definitions from './proto/_nestjs/src/proto/entities/shared/query_params_users';

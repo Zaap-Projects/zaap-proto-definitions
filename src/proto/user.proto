@@ -3,6 +3,7 @@ syntax = "proto3";
 import "src/proto/entities/shared/id_params.proto";
 import "src/proto/entities/shared/empty_value.proto";
 import "src/proto/entities/shared/phone_number.proto";
+import "src/proto/entities/shared/query_params_users.proto";
 
 import "src/proto/entities/user_entity.proto";
 
@@ -11,7 +12,7 @@ package userService;
 service UserService {
     rpc GetUserById(IdParams) returns (UserEntity) {};
     rpc GetUserByUsername(GetUserByUsernameRequest) returns (UserEntityWithPassword) {};
-    rpc GetAllUsers(EmptyValue) returns (UserEntityList) {};
+    rpc GetMultipleUsers(QueryParamsUsers) returns (UserEntityList) {};
     rpc CreateUser(CreateUserRequest) returns (UserEntity) {};
     rpc UpdateUser(UpdateUserRequest) returns (UserEntity) {};
     rpc DeleteUser(IdParams) returns (EmptyValue) {};
