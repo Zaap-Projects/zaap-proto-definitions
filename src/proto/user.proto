@@ -1,9 +1,9 @@
 syntax = "proto3";
 
 import "src/proto/entities/shared/id_params.proto";
-import "src/proto/entities/shared/empty_value.proto";
 import "src/proto/entities/shared/phone_number.proto";
 import "src/proto/entities/shared/query_params_users.proto";
+import "src/proto/entities/shared/delete_status.proto";
 
 import "src/proto/entities/user_entity.proto";
 
@@ -15,7 +15,7 @@ service UserService {
     rpc GetMultipleUsers(QueryParamsUsers) returns (UserEntityList) {};
     rpc CreateUser(CreateUserRequest) returns (UserEntity) {};
     rpc UpdateUser(UpdateUserRequest) returns (UserEntity) {};
-    rpc DeleteUser(IdParams) returns (EmptyValue) {};
+    rpc DeleteUser(IdParamsList) returns (DeleteStatus) {};
 }
 
 // get-user-by-username messages

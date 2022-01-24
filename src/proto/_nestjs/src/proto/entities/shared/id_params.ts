@@ -8,6 +8,10 @@ export interface IdParams {
   id: string;
 }
 
+export interface IdParamsList {
+  id: string[];
+}
+
 export const _PACKAGE_NAME = '';
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',

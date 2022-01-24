@@ -3,3 +3,7 @@ syntax = "proto3";
 message IdParams {
     string id = 1;
 }
+
+message IdParamsList {
+    repeated string id = 1;
+}

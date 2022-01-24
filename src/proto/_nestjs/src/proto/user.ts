@@ -10,8 +10,11 @@ import {
   UserEntityWithPassword,
   UserEntityList,
 } from '../../src/proto/entities/user_entity';
-import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
-import { IdParams } from '../../src/proto/entities/shared/id_params';
+import { DeleteStatus } from '../../src/proto/entities/shared/delete_status';
+import {
+  IdParams,
+  IdParamsList,
+} from '../../src/proto/entities/shared/id_params';
 import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_users';
 
 export const protobufPackage = 'userService';
@@ -63,7 +66,10 @@ export interface UserServiceClient {
     metadata?: Metadata,
   ): Observable<UserEntity>;
 
-  deleteUser(request: IdParams, metadata?: Metadata): Observable<EmptyValue>;
+  deleteUser(
+    request: IdParamsList,
+    metadata?: Metadata,
+  ): Observable<DeleteStatus>;
 }
 
 export interface UserServiceController {
@@ -96,9 +102,9 @@ export interface UserServiceController {
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
   deleteUser(
-    request: IdParams,
+    request: IdParamsList,
     metadata?: Metadata,
-  ): Promise<EmptyValue> | Observable<EmptyValue> | EmptyValue;
+  ): Promise<DeleteStatus> | Observable<DeleteStatus> | DeleteStatus;
 }
 
 export function UserServiceControllerMethods() {
