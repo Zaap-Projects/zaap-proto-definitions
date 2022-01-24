@@ -9,7 +9,7 @@ export interface IdParams {
 }
 
 export interface IdParamsList {
-  id: string[];
+  ids: string[];
 }
 
 export const _PACKAGE_NAME = '';
