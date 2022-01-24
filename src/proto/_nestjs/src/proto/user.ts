@@ -17,7 +17,8 @@ export const protobufPackage = 'userService';
 
 /** get-user-by-username messages */
 export interface GetUserByUsernameRequest {
-  username: string;
+  email: string | undefined;
+  phoneNumber: PhoneNumber | undefined;
 }
 
 /** create-user messages */

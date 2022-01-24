@@ -19,7 +19,10 @@ service UserService {
 
 // get-user-by-username messages
 message GetUserByUsernameRequest {
-    string username = 1;
+    oneof params_oneof {
+        string email = 1;
+        PhoneNumber phoneNumber = 2;
+    }
 }
 
 // create-user messages
