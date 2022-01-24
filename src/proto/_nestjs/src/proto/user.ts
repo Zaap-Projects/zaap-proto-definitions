@@ -12,6 +12,7 @@ import {
 } from '../../src/proto/entities/user_entity';
 import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
 import { IdParams } from '../../src/proto/entities/shared/id_params';
+import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_users';
 
 export const protobufPackage = 'userService';
 
@@ -47,8 +48,8 @@ export interface UserServiceClient {
     metadata?: Metadata,
   ): Observable<UserEntityWithPassword>;
 
-  getAllUsers(
-    request: EmptyValue,
+  getMultipleUsers(
+    request: QueryParamsUsers,
     metadata?: Metadata,
   ): Observable<UserEntityList>;
 
@@ -79,8 +80,8 @@ export interface UserServiceController {
     | Observable<UserEntityWithPassword>
     | UserEntityWithPassword;
 
-  getAllUsers(
-    request: EmptyValue,
+  getMultipleUsers(
+    request: QueryParamsUsers,
     metadata?: Metadata,
   ): Promise<UserEntityList> | Observable<UserEntityList> | UserEntityList;
 
@@ -105,7 +106,7 @@ export function UserServiceControllerMethods() {
     const grpcMethods: string[] = [
       'getUserById',
       'getUserByUsername',
-      'getAllUsers',
+      'getMultipleUsers',
       'createUser',
       'updateUser',
       'deleteUser',
