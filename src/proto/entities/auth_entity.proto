@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "src/proto/entities/user_entity.proto";
+
+message TokensEntity {
+    string access = 1;
+    string refresh = 2;
+}
+
+message LoginResponse {
+    TokensEntity tokens = 1;
+    UserEntity user = 2;
+}
+
+message SignupAccountResponse {
+    oneof params_oneof {
+        UserEntity user = 1;
+    }
+}

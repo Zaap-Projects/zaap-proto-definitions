@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message ListMeta {
+    int32 totalItems = 1;
+    int32 itemsCount = 2;
+    int32 currentPage = 3;
+    int32 nextPage = 4;
+    int32 totalPages = 5;
+}

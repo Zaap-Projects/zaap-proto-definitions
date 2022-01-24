@@ -1,27 +1,41 @@
 syntax = "proto3";
 
-import "src/proto/phone_number.proto";
+import "src/proto/entities/shared/id_params.proto";
+import "src/proto/entities/shared/empty_value.proto";
+import "src/proto/entities/shared/phone_number.proto";
+
+import "src/proto/entities/user_entity.proto";
 
 package userService;
 
 service UserService {
+    rpc GetUserById(IdParams) returns (UserEntity) {};
+    rpc GetUserByUsername(GetUserByUsernameRequest) returns (UserEntityWithPassword) {};
+    rpc GetAllUsers(EmptyValue) returns (UserEntityList) {};
     rpc CreateUser(CreateUserRequest) returns (UserEntity) {};
+    rpc UpdateUser(UpdateUserRequest) returns (UserEntity) {};
+    rpc DeleteUser(IdParams) returns (EmptyValue) {};
 }
 
+// get-user-by-username messages
+message GetUserByUsernameRequest {
+    string username = 1;
+}
+
+// create-user messages
 message CreateUserRequest {
     string firstname = 1;
     string lastname = 2;
-    phoneNumber.PhoneNumber phoneNumber = 3;
+    PhoneNumber phoneNumber = 3;
     string email = 4;
     string password = 5;
 }
 
-message UserEntity {
+// update-user messages
+message UpdateUserRequest {
     string id = 1;
     string firstname = 2;
     string lastname = 3;
-    phoneNumber.PhoneNumber phoneNumber = 4;
+    PhoneNumber phoneNumber = 4;
     string email = 5;
-    string createdAt = 6;
-    string updatedAt = 7;
 }

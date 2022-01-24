@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "src/proto/entities/shared/list_meta.proto";
+import "src/proto/entities/shared/phone_number.proto";
+
+message UserEntityList {
+    repeated UserEntity data = 1;
+    ListMeta meta = 2;
+}
+
+message UserEntity {
+    string id = 1;
+    string firstname = 2;
+    string lastname = 3;
+    PhoneNumber phoneNumber = 4;
+    string email = 5;
+    string createdAt = 6;
+    string updatedAt = 7;
+}
+
+message UserEntityWithPassword {
+    string id = 1;
+    string firstname = 2;
+    string lastname = 3;
+    PhoneNumber phoneNumber = 4;
+    string email = 5;
+    string password = 6;
+}

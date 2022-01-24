@@ -3,16 +3,15 @@ import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
 import { Observable } from 'rxjs';
-import { UserEntity, CreateUserRequest } from '../../src/proto/user';
+import { CreateUserRequest } from '../../src/proto/user';
 import { Metadata } from '@grpc/grpc-js';
+import {
+  TokensEntity,
+  LoginResponse,
+  SignupAccountResponse,
+} from '../../src/proto/entities/auth_entity';
 
 export const protobufPackage = 'authService';
-
-/** generic entities */
-export interface TokensEntity {
-  access: string;
-  refresh: string;
-}
 
 /** token messages */
 export interface TokensRequest {
@@ -25,21 +24,9 @@ export interface LoginRequest {
   password: string;
 }
 
-export interface LoginResponse {
-  tokens: TokensEntity | undefined;
-  user: UserEntity | undefined;
-}
-
-/**
- * signup messages
- * TODO: add other params eg. CreateCourierRequest, CreateFleetRequest
- */
+/** TODO: add other params eg. CreateCourierRequest, CreateFleetRequest */
 export interface SignupAccountRequest {
   createUserRequest: CreateUserRequest | undefined;
-}
-
-export interface SignupAccountResponse {
-  user: UserEntity | undefined;
 }
 
 export const AUTH_SERVICE_PACKAGE_NAME = 'authService';

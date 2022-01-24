@@ -3,11 +3,24 @@ import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
 import { Observable } from 'rxjs';
-import { PhoneNumber } from '../../src/proto/phone_number';
+import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import { Metadata } from '@grpc/grpc-js';
+import {
+  UserEntity,
+  UserEntityWithPassword,
+  UserEntityList,
+} from '../../src/proto/entities/user_entity';
+import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
+import { IdParams } from '../../src/proto/entities/shared/id_params';
 
 export const protobufPackage = 'userService';
 
+/** get-user-by-username messages */
+export interface GetUserByUsernameRequest {
+  username: string;
+}
+
+/** create-user messages */
 export interface CreateUserRequest {
   firstname: string;
   lastname: string;
@@ -16,35 +29,88 @@ export interface CreateUserRequest {
   password: string;
 }
 
-export interface UserEntity {
+/** update-user messages */
+export interface UpdateUserRequest {
   id: string;
   firstname: string;
   lastname: string;
   phoneNumber: PhoneNumber | undefined;
   email: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export const USER_SERVICE_PACKAGE_NAME = 'userService';
 
 export interface UserServiceClient {
+  getUserById(request: IdParams, metadata?: Metadata): Observable<UserEntity>;
+
+  getUserByUsername(
+    request: GetUserByUsernameRequest,
+    metadata?: Metadata,
+  ): Observable<UserEntityWithPassword>;
+
+  getAllUsers(
+    request: EmptyValue,
+    metadata?: Metadata,
+  ): Observable<UserEntityList>;
+
   createUser(
     request: CreateUserRequest,
     metadata?: Metadata,
   ): Observable<UserEntity>;
+
+  updateUser(
+    request: UpdateUserRequest,
+    metadata?: Metadata,
+  ): Observable<UserEntity>;
+
+  deleteUser(request: IdParams, metadata?: Metadata): Observable<EmptyValue>;
 }
 
 export interface UserServiceController {
+  getUserById(
+    request: IdParams,
+    metadata?: Metadata,
+  ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
+
+  getUserByUsername(
+    request: GetUserByUsernameRequest,
+    metadata?: Metadata,
+  ):
+    | Promise<UserEntityWithPassword>
+    | Observable<UserEntityWithPassword>
+    | UserEntityWithPassword;
+
+  getAllUsers(
+    request: EmptyValue,
+    metadata?: Metadata,
+  ): Promise<UserEntityList> | Observable<UserEntityList> | UserEntityList;
+
   createUser(
     request: CreateUserRequest,
     metadata?: Metadata,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
+
+  updateUser(
+    request: UpdateUserRequest,
+    metadata?: Metadata,
+  ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
+
+  deleteUser(
+    request: IdParams,
+    metadata?: Metadata,
+  ): Promise<EmptyValue> | Observable<EmptyValue> | EmptyValue;
 }
 
 export function UserServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ['createUser'];
+    const grpcMethods: string[] = [
+      'getUserById',
+      'getUserByUsername',
+      'getAllUsers',
+      'createUser',
+      'updateUser',
+      'deleteUser',
+    ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(
         constructor.prototype,
