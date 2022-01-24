@@ -1,10 +1,15 @@
 /* eslint-disable */
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
+import { IdParamsList } from '../../../../src/proto/entities/shared/id_params';
 
 export const protobufPackage = '';
 
-export interface EmptyValue {}
+export interface DeleteStatus {
+  message: string;
+  deleted: IdParamsList[];
+  failed: IdParamsList[];
+}
 
 export const _PACKAGE_NAME = '';
 
