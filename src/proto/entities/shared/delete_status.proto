@@ -1,10 +1,7 @@
 syntax = "proto3";
 
-import "src/proto/entities/shared/id_params.proto";
-
 message DeleteStatus {
     string message = 1;
-    IdParamsList deleted = 2;
-    IdParamsList notFound = 3;
-    IdParamsList failed = 4;
+    int32 deleted = 2;
+    int32 failed = 3;
 }
