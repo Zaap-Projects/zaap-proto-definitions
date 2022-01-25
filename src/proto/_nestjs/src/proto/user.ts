@@ -20,7 +20,7 @@ import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_u
 export const protobufPackage = 'userService';
 
 /** get-user-by-username messages */
-export interface GetUserByUsernameRequest {
+export interface GetUserByEmailOrPhoneNumberRequest {
   email: string | undefined;
   phoneNumber: PhoneNumber | undefined;
 }
@@ -46,8 +46,8 @@ export const USER_SERVICE_PACKAGE_NAME = 'userService';
 export interface UserServiceClient {
   getUserById(request: IdParams, metadata?: Metadata): Observable<UserEntity>;
 
-  getUserByUsername(
-    request: GetUserByUsernameRequest,
+  getUserByEmailOrPhoneNumber(
+    request: GetUserByEmailOrPhoneNumberRequest,
     metadata?: Metadata,
   ): Observable<UserEntityWithPassword>;
 
@@ -78,8 +78,8 @@ export interface UserServiceController {
     metadata?: Metadata,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
-  getUserByUsername(
-    request: GetUserByUsernameRequest,
+  getUserByEmailOrPhoneNumber(
+    request: GetUserByEmailOrPhoneNumberRequest,
     metadata?: Metadata,
   ):
     | Promise<UserEntityWithPassword>
@@ -111,7 +111,7 @@ export function UserServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
       'getUserById',
-      'getUserByUsername',
+      'getUserByEmailOrPhoneNumber',
       'getMultipleUsers',
       'createUser',
       'updateUser',
