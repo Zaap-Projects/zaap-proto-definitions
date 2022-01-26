@@ -5,29 +5,29 @@ import * as Long from 'long';
 import { Observable } from 'rxjs';
 import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import {
-  SendSmsSucessResponse,
-  SendSmsFailureResponse,
-  SmsUnitBalanceResponse,
-  SmsDlrReportResponse,
-} from '../../src/proto/entities/communication/sms_entity';
+  MessageSucessResponse,
+  MessageFailureResponse,
+  MessageUnitBalanceResponse,
+  MessageDlrReportResponse,
+} from '../../src/proto/entities/communication/message_entity';
 import { Metadata } from '@grpc/grpc-js';
 import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
 
 export const protobufPackage = 'communicationService';
 
-/** CommunicationSMSService messages */
-export interface SendSmsRequest {
+/** SendMessage messages */
+export interface SendMessageRequest {
   phoneNumbers: PhoneNumber[];
   message: string;
 }
 
-export interface SendSmsResponse {
-  success: SendSmsSucessResponse | undefined;
-  failure: SendSmsFailureResponse | undefined;
+export interface SendMessageResponse {
+  success: MessageSucessResponse | undefined;
+  failure: MessageFailureResponse | undefined;
 }
 
-/** SMSDLRReport messages */
-export interface SmsDlrReportRequest {
+/** MessageDlrReport messages */
+export interface MessageDlrReportRequest {
   smsId?: string | undefined;
   senderId?: string | undefined;
   startFrom?: string | undefined;
@@ -38,52 +38,59 @@ export interface SmsDlrReportRequest {
 export const COMMUNICATION_SERVICE_PACKAGE_NAME = 'communicationService';
 
 export interface CommunicationServiceClient {
-  /** SMS service */
+  /** Message service */
 
-  sendSms(
-    request: SendSmsRequest,
+  sendMessage(
+    request: SendMessageRequest,
     metadata?: Metadata,
-  ): Observable<SendSmsResponse>;
+  ): Observable<SendMessageResponse>;
 
-  smsUnitBalance(
+  messageUnitBalance(
     request: EmptyValue,
     metadata?: Metadata,
-  ): Observable<SmsUnitBalanceResponse>;
+  ): Observable<MessageUnitBalanceResponse>;
 
-  smsDlrReport(
-    request: SmsDlrReportRequest,
+  messageDlrReport(
+    request: MessageDlrReportRequest,
     metadata?: Metadata,
-  ): Observable<SmsDlrReportResponse>;
+  ): Observable<MessageDlrReportResponse>;
 }
 
 export interface CommunicationServiceController {
-  /** SMS service */
+  /** Message service */
 
-  sendSms(
-    request: SendSmsRequest,
+  sendMessage(
+    request: SendMessageRequest,
     metadata?: Metadata,
-  ): Promise<SendSmsResponse> | Observable<SendSmsResponse> | SendSmsResponse;
+  ):
+    | Promise<SendMessageResponse>
+    | Observable<SendMessageResponse>
+    | SendMessageResponse;
 
-  smsUnitBalance(
+  messageUnitBalance(
     request: EmptyValue,
     metadata?: Metadata,
   ):
-    | Promise<SmsUnitBalanceResponse>
-    | Observable<SmsUnitBalanceResponse>
-    | SmsUnitBalanceResponse;
+    | Promise<MessageUnitBalanceResponse>
+    | Observable<MessageUnitBalanceResponse>
+    | MessageUnitBalanceResponse;
 
-  smsDlrReport(
-    request: SmsDlrReportRequest,
+  messageDlrReport(
+    request: MessageDlrReportRequest,
     metadata?: Metadata,
   ):
-    | Promise<SmsDlrReportResponse>
-    | Observable<SmsDlrReportResponse>
-    | SmsDlrReportResponse;
+    | Promise<MessageDlrReportResponse>
+    | Observable<MessageDlrReportResponse>
+    | MessageDlrReportResponse;
 }
 
 export function CommunicationServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ['sendSms', 'smsUnitBalance', 'smsDlrReport'];
+    const grpcMethods: string[] = [
+      'sendMessage',
+      'messageUnitBalance',
+      'messageDlrReport',
+    ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(
         constructor.prototype,

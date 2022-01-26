@@ -1,33 +1,33 @@
 syntax = "proto3";
 
 import "src/proto/entities/shared/phone_number.proto";
-import "src/proto/entities/communication/sms_entity.proto";
+import "src/proto/entities/communication/message_entity.proto";
 import "src/proto/entities/shared/empty_value.proto";
 
 package communicationService;
 
 service CommunicationService {
-    // SMS service
-    rpc SendSms(SendSmsRequest) returns (SendSmsResponse) {}
-    rpc SmsUnitBalance(EmptyValue) returns (SmsUnitBalanceResponse) {}
-    rpc SmsDlrReport(SmsDlrReportRequest) returns (SmsDlrReportResponse) {}
+    // Message service
+    rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
+    rpc MessageUnitBalance(EmptyValue) returns (MessageUnitBalanceResponse) {}
+    rpc MessageDlrReport(MessageDlrReportRequest) returns (MessageDlrReportResponse) {}
 }
 
-// CommunicationSMSService messages
-message SendSmsRequest {
+// SendMessage messages
+message SendMessageRequest {
     repeated PhoneNumber phoneNumbers = 1;
     string message = 2;
 }
 
-message SendSmsResponse {
+message SendMessageResponse {
     oneof response {
-        SendSmsSucessResponse success = 1;
-        SendSmsFailureResponse failure = 2;
+        MessageSucessResponse success = 1;
+        MessageFailureResponse failure = 2;
     }
 }
 
-// SMSDLRReport messages
-message SmsDlrReportRequest {
+// MessageDlrReport messages
+message MessageDlrReportRequest {
     optional string smsId = 1;
     optional string senderId = 2;
     optional string startFrom = 3;
