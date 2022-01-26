@@ -5,7 +5,7 @@ import * as Long from 'long';
 export const protobufPackage = '';
 
 /** CommunicationSMSService messages */
-export interface SendSMSSucessResponse {
+export interface SendSmsSucessResponse {
   type: string;
   status: number;
   smsId: string;
@@ -14,7 +14,7 @@ export interface SendSMSSucessResponse {
   detail: string;
 }
 
-export interface SendSMSFailureResponse {
+export interface SendSmsFailureResponse {
   type: string;
   code: number;
   error: string;
@@ -30,7 +30,7 @@ export interface SmsUnitBalanceResponse {
 }
 
 /** SMSDLRReport messages */
-export interface SmsDLRReportResponse {
+export interface SmsDlrReportResponse {
   status: string;
   smsId: string[];
   dlrStatus: string[];
