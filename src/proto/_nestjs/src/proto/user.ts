@@ -7,7 +7,6 @@ import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import { Metadata } from '@grpc/grpc-js';
 import {
   UserEntity,
-  UserEntityWithPassword,
   UserEntityList,
 } from '../../src/proto/entities/user_entity';
 import { DeleteStatus } from '../../src/proto/entities/shared/delete_status';
@@ -49,7 +48,7 @@ export interface UserServiceClient {
   getUserByEmailOrPhoneNumber(
     request: GetUserByEmailOrPhoneNumberRequest,
     metadata?: Metadata,
-  ): Observable<UserEntityWithPassword>;
+  ): Observable<UserEntity>;
 
   getMultipleUsers(
     request: QueryParamsUsers,
@@ -81,10 +80,7 @@ export interface UserServiceController {
   getUserByEmailOrPhoneNumber(
     request: GetUserByEmailOrPhoneNumberRequest,
     metadata?: Metadata,
-  ):
-    | Promise<UserEntityWithPassword>
-    | Observable<UserEntityWithPassword>
-    | UserEntityWithPassword;
+  ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
   getMultipleUsers(
     request: QueryParamsUsers,

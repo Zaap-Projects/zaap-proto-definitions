@@ -11,7 +11,7 @@ package userService;
 
 service UserService {
     rpc GetUserById(IdParams) returns (UserEntity) {};
-    rpc GetUserByEmailOrPhoneNumber(GetUserByEmailOrPhoneNumberRequest) returns (UserEntityWithPassword) {};
+    rpc GetUserByEmailOrPhoneNumber(GetUserByEmailOrPhoneNumberRequest) returns (UserEntity) {};
     rpc GetMultipleUsers(QueryParamsUsers) returns (UserEntityList) {};
     rpc CreateUser(CreateUserRequest) returns (UserEntity) {};
     rpc UpdateUser(UpdateUserRequest) returns (UserEntity) {};
