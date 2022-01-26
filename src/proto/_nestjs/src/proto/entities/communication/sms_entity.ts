@@ -10,7 +10,7 @@ export interface SendSMSSucessResponse {
   status: number;
   smsId: string;
   error: string;
-  receiverNumbers: string;
+  receiverNumbers: string[];
   detail: string;
 }
 
@@ -32,10 +32,10 @@ export interface SmsUnitBalanceResponse {
 /** SMSDLRReport messages */
 export interface SmsDLRReportResponse {
   status: string;
-  smsId: string;
-  dlrStatus: string;
-  messageDateTime: string;
-  pageNumber: string;
+  smsId: string[];
+  dlrStatus: string[];
+  messageDateTime: string[];
+  pageNumber: number;
 }
 
 export const _PACKAGE_NAME = '';

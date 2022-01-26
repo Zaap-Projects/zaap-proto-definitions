@@ -6,7 +6,7 @@ message SendSMSSucessResponse {
     int32 status = 2;
     string smsId = 3;
     string error = 4;
-    string receiverNumbers = 5;
+    repeated string receiverNumbers = 5;
     string detail = 6;
 }
 
@@ -28,8 +28,8 @@ message SmsUnitBalanceResponse {
 // SMSDLRReport messages
 message SmsDLRReportResponse {
     string status = 1;
-    string smsId = 2;
-    string dlrStatus = 3;
-    string messageDateTime = 4;
-    string pageNumber = 5;
+    repeated string smsId = 2;
+    repeated string dlrStatus = 3;
+    repeated string messageDateTime = 4;
+    int32 pageNumber = 5;
 }
