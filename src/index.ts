@@ -8,7 +8,7 @@ export * as communication_definitions from './proto/_nestjs/src/proto/communicat
 export * as auth_entity_definitions from './proto/_nestjs/src/proto/entities/auth_entity';
 export * as user_entity_definitions from './proto/_nestjs/src/proto/entities/user_entity';
 
-export * as sms_entity_definitions from './proto/_nestjs/src/proto/entities/communication/sms_entity';
+export * as message_entity_definitions from './proto/_nestjs/src/proto/entities/communication/message_entity';
 
 // export * as empty_value_definitions from './proto/_nestjs/src/proto/entities/shared/empty_value';
 export * as id_params_definitions from './proto/_nestjs/src/proto/entities/shared/id_params';
