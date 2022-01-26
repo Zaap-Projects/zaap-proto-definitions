@@ -5,10 +5,10 @@ import * as Long from 'long';
 import { Observable } from 'rxjs';
 import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import {
-  SendSMSSucessResponse,
-  SendSMSFailureResponse,
+  SendSmsSucessResponse,
+  SendSmsFailureResponse,
   SmsUnitBalanceResponse,
-  SmsDLRReportResponse,
+  SmsDlrReportResponse,
 } from '../../src/proto/entities/communication/sms_entity';
 import { Metadata } from '@grpc/grpc-js';
 import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
@@ -16,18 +16,18 @@ import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
 export const protobufPackage = 'communicationService';
 
 /** CommunicationSMSService messages */
-export interface SendSMSRequest {
+export interface SendSmsRequest {
   phoneNumbers: PhoneNumber[];
   message: string;
 }
 
-export interface SendSMSResponse {
-  success: SendSMSSucessResponse | undefined;
-  failure: SendSMSFailureResponse | undefined;
+export interface SendSmsResponse {
+  success: SendSmsSucessResponse | undefined;
+  failure: SendSmsFailureResponse | undefined;
 }
 
 /** SMSDLRReport messages */
-export interface SmsDLRReportRequest {
+export interface SmsDlrReportRequest {
   smsId?: string | undefined;
   senderId?: string | undefined;
   startFrom?: string | undefined;
@@ -41,9 +41,9 @@ export interface CommunicationServiceClient {
   /** SMS service */
 
   sendSMS(
-    request: SendSMSRequest,
+    request: SendSmsRequest,
     metadata?: Metadata,
-  ): Observable<SendSMSResponse>;
+  ): Observable<SendSmsResponse>;
 
   smsUnitBalance(
     request: EmptyValue,
@@ -51,18 +51,18 @@ export interface CommunicationServiceClient {
   ): Observable<SmsUnitBalanceResponse>;
 
   smsDLRReport(
-    request: SmsDLRReportRequest,
+    request: SmsDlrReportRequest,
     metadata?: Metadata,
-  ): Observable<SmsDLRReportResponse>;
+  ): Observable<SmsDlrReportResponse>;
 }
 
 export interface CommunicationServiceController {
   /** SMS service */
 
   sendSMS(
-    request: SendSMSRequest,
+    request: SendSmsRequest,
     metadata?: Metadata,
-  ): Promise<SendSMSResponse> | Observable<SendSMSResponse> | SendSMSResponse;
+  ): Promise<SendSmsResponse> | Observable<SendSmsResponse> | SendSmsResponse;
 
   smsUnitBalance(
     request: EmptyValue,
@@ -73,12 +73,12 @@ export interface CommunicationServiceController {
     | SmsUnitBalanceResponse;
 
   smsDLRReport(
-    request: SmsDLRReportRequest,
+    request: SmsDlrReportRequest,
     metadata?: Metadata,
   ):
-    | Promise<SmsDLRReportResponse>
-    | Observable<SmsDLRReportResponse>
-    | SmsDLRReportResponse;
+    | Promise<SmsDlrReportResponse>
+    | Observable<SmsDlrReportResponse>
+    | SmsDlrReportResponse;
 }
 
 export function CommunicationServiceControllerMethods() {

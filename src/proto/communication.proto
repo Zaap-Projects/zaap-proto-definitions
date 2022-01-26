@@ -8,26 +8,26 @@ package communicationService;
 
 service CommunicationService {
     // SMS service
-    rpc SendSMS(SendSMSRequest) returns (SendSMSResponse) {}
+    rpc SendSMS(SendSmsRequest) returns (SendSmsResponse) {}
     rpc SmsUnitBalance(EmptyValue) returns (SmsUnitBalanceResponse) {}
-    rpc SmsDLRReport(SmsDLRReportRequest) returns (SmsDLRReportResponse) {}
+    rpc SmsDLRReport(SmsDlrReportRequest) returns (SmsDlrReportResponse) {}
 }
 
 // CommunicationSMSService messages
-message SendSMSRequest {
+message SendSmsRequest {
     repeated PhoneNumber phoneNumbers = 1;
     string message = 2;
 }
 
-message SendSMSResponse {
+message SendSmsResponse {
     oneof response {
-        SendSMSSucessResponse success = 1;
-        SendSMSFailureResponse failure = 2;
+        SendSmsSucessResponse success = 1;
+        SendSmsFailureResponse failure = 2;
     }
 }
 
 // SMSDLRReport messages
-message SmsDLRReportRequest {
+message SmsDlrReportRequest {
     optional string smsId = 1;
     optional string senderId = 2;
     optional string startFrom = 3;

@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 // CommunicationSMSService messages
-message SendSMSSucessResponse {
+message SendSmsSucessResponse {
     string type = 1;
     int32 status = 2;
     string smsId = 3;
@@ -10,7 +10,7 @@ message SendSMSSucessResponse {
     string detail = 6;
 }
 
-message SendSMSFailureResponse {
+message SendSmsFailureResponse {
     string type = 1;
     int32 code = 2;
     string error = 3;
@@ -26,7 +26,7 @@ message SmsUnitBalanceResponse {
 }
 
 // SMSDLRReport messages
-message SmsDLRReportResponse {
+message SmsDlrReportResponse {
     string status = 1;
     repeated string smsId = 2;
     repeated string dlrStatus = 3;
