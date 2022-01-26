@@ -21,15 +21,6 @@ export interface UserEntity {
   updatedAt: string;
 }
 
-export interface UserEntityWithPassword {
-  id: string;
-  firstname: string;
-  lastname: string;
-  phoneNumber: PhoneNumber | undefined;
-  email: string;
-  password: string;
-}
-
 export const _PACKAGE_NAME = '';
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',

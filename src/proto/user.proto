@@ -11,19 +11,10 @@ package userService;
 
 service UserService {
     rpc GetUserById(IdParams) returns (UserEntity) {};
-    rpc GetUserByEmailOrPhoneNumber(GetUserByEmailOrPhoneNumberRequest) returns (UserEntityWithPassword) {};
     rpc GetMultipleUsers(QueryParamsUsers) returns (UserEntityList) {};
     rpc CreateUser(CreateUserRequest) returns (UserEntity) {};
     rpc UpdateUser(UpdateUserRequest) returns (UserEntity) {};
     rpc DeleteUsers(IdParamsList) returns (DeleteStatus) {};
-}
-
-// get-user-by-username messages
-message GetUserByEmailOrPhoneNumberRequest {
-    oneof params_oneof {
-        string email = 1;
-        PhoneNumber phoneNumber = 2;
-    }
 }
 
 // create-user messages

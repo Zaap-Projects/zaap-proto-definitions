@@ -7,7 +7,6 @@ import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import { Metadata } from '@grpc/grpc-js';
 import {
   UserEntity,
-  UserEntityWithPassword,
   UserEntityList,
 } from '../../src/proto/entities/user_entity';
 import { DeleteStatus } from '../../src/proto/entities/shared/delete_status';
@@ -18,12 +17,6 @@ import {
 import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_users';
 
 export const protobufPackage = 'userService';
-
-/** get-user-by-username messages */
-export interface GetUserByEmailOrPhoneNumberRequest {
-  email: string | undefined;
-  phoneNumber: PhoneNumber | undefined;
-}
 
 /** create-user messages */
 export interface CreateUserRequest {
@@ -45,11 +38,6 @@ export const USER_SERVICE_PACKAGE_NAME = 'userService';
 
 export interface UserServiceClient {
   getUserById(request: IdParams, metadata?: Metadata): Observable<UserEntity>;
-
-  getUserByEmailOrPhoneNumber(
-    request: GetUserByEmailOrPhoneNumberRequest,
-    metadata?: Metadata,
-  ): Observable<UserEntityWithPassword>;
 
   getMultipleUsers(
     request: QueryParamsUsers,
@@ -78,14 +66,6 @@ export interface UserServiceController {
     metadata?: Metadata,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
-  getUserByEmailOrPhoneNumber(
-    request: GetUserByEmailOrPhoneNumberRequest,
-    metadata?: Metadata,
-  ):
-    | Promise<UserEntityWithPassword>
-    | Observable<UserEntityWithPassword>
-    | UserEntityWithPassword;
-
   getMultipleUsers(
     request: QueryParamsUsers,
     metadata?: Metadata,
@@ -111,7 +91,6 @@ export function UserServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
       'getUserById',
-      'getUserByEmailOrPhoneNumber',
       'getMultipleUsers',
       'createUser',
       'updateUser',

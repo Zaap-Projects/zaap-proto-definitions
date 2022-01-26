@@ -24,7 +24,7 @@ message LoginRequest {
 
 // TODO: add other params eg. CreateCourierRequest, CreateFleetRequest
 message SignupAccountRequest {
-    oneof params_oneof {
+    oneof account {
         userService.CreateUserRequest createUserRequest = 1;
     }
 }
