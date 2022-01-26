@@ -6,7 +6,8 @@ import "src/proto/entities/shared/empty_value.proto";
 
 package communicationService;
 
-service CommunicationSMSService {
+service CommunicationService {
+    // SMS service
     rpc SendSMS(SendSMSRequest) returns (SendSMSResponse) {}
     rpc SmsUnitBalance(EmptyValue) returns (SmsUnitBalanceResponse) {}
     rpc SmsDLRReport(SmsDLRReportRequest) returns (SmsDLRReportResponse) {}

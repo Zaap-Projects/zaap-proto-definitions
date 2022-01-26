@@ -36,7 +36,9 @@ export interface SmsDLRReportRequest {
 
 export const COMMUNICATION_SERVICE_PACKAGE_NAME = 'communicationService';
 
-export interface CommunicationSMSServiceClient {
+export interface CommunicationServiceClient {
+  /** SMS service */
+
   sendSMS(
     request: SendSMSRequest,
     metadata?: Metadata,
@@ -53,7 +55,9 @@ export interface CommunicationSMSServiceClient {
   ): Observable<SmsDLRReportResponse>;
 }
 
-export interface CommunicationSMSServiceController {
+export interface CommunicationServiceController {
+  /** SMS service */
+
   sendSMS(
     request: SendSMSRequest,
     metadata?: Metadata,
@@ -76,7 +80,7 @@ export interface CommunicationSMSServiceController {
     | SmsDLRReportResponse;
 }
 
-export function CommunicationSMSServiceControllerMethods() {
+export function CommunicationServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = ['sendSMS', 'smsUnitBalance', 'smsDLRReport'];
     for (const method of grpcMethods) {
@@ -84,7 +88,7 @@ export function CommunicationSMSServiceControllerMethods() {
         constructor.prototype,
         method,
       );
-      GrpcMethod('CommunicationSMSService', method)(
+      GrpcMethod('CommunicationService', method)(
         constructor.prototype[method],
         method,
         descriptor,
@@ -96,7 +100,7 @@ export function CommunicationSMSServiceControllerMethods() {
         constructor.prototype,
         method,
       );
-      GrpcStreamMethod('CommunicationSMSService', method)(
+      GrpcStreamMethod('CommunicationService', method)(
         constructor.prototype[method],
         method,
         descriptor,
@@ -105,7 +109,7 @@ export function CommunicationSMSServiceControllerMethods() {
   };
 }
 
-export const COMMUNICATION_SM_SSERVICE_NAME = 'CommunicationSMSService';
+export const COMMUNICATION_SERVICE_NAME = 'CommunicationService';
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',
 // add '--ts_proto_opt=esModuleInterop=true' as a flag when calling 'protoc'.
