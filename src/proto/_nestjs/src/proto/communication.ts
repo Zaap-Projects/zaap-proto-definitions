@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import {
   SendSMSSucessResponse,
+  SendSMSFailureResponse,
   SmsUnitBalanceResponse,
   SmsDLRReportResponse,
 } from '../../src/proto/entities/communication/sms_entity';
@@ -22,7 +23,7 @@ export interface SendSMSRequest {
 
 export interface SendSMSResponse {
   success: SendSMSSucessResponse | undefined;
-  failure: SendSMSSucessResponse | undefined;
+  failure: SendSMSFailureResponse | undefined;
 }
 
 /** SMSDLRReport messages */
