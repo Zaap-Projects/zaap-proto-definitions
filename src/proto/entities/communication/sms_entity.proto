@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+// CommunicationSMSService messages
+message SendSMSSucessResponse {
+    string type = 1;
+    int32 status = 2;
+    string smsId = 3;
+    string error = 4;
+    string receiverNumbers = 5;
+    string detail = 6;
+}
+
+message SendSMSFailureResponse {
+    string type = 1;
+    int32 code = 2;
+    string error = 3;
+    string detail = 4;
+}
+
+// SMSUnitBalance messages
+message SmsUnitBalanceResponse {
+    string status = 1;
+    string response = 2;
+    int32 totalUnit = 3;
+    int32 totalBonus = 4;
+}
+
+// SMSDLRReport messages
+message SmsDLRReportResponse {
+    string status = 1;
+    string smsId = 2;
+    string dlrStatus = 3;
+    string messageDateTime = 4;
+    string pageNumber = 5;
+}
