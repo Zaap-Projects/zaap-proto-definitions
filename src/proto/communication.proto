@@ -8,9 +8,9 @@ package communicationService;
 
 service CommunicationService {
     // SMS service
-    rpc SendSMS(SendSmsRequest) returns (SendSmsResponse) {}
+    rpc SendSms(SendSmsRequest) returns (SendSmsResponse) {}
     rpc SmsUnitBalance(EmptyValue) returns (SmsUnitBalanceResponse) {}
-    rpc SmsDLRReport(SmsDlrReportRequest) returns (SmsDlrReportResponse) {}
+    rpc SmsDlrReport(SmsDlrReportRequest) returns (SmsDlrReportResponse) {}
 }
 
 // CommunicationSMSService messages

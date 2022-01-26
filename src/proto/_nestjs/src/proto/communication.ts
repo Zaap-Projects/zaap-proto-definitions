@@ -40,7 +40,7 @@ export const COMMUNICATION_SERVICE_PACKAGE_NAME = 'communicationService';
 export interface CommunicationServiceClient {
   /** SMS service */
 
-  sendSMS(
+  sendSms(
     request: SendSmsRequest,
     metadata?: Metadata,
   ): Observable<SendSmsResponse>;
@@ -50,7 +50,7 @@ export interface CommunicationServiceClient {
     metadata?: Metadata,
   ): Observable<SmsUnitBalanceResponse>;
 
-  smsDLRReport(
+  smsDlrReport(
     request: SmsDlrReportRequest,
     metadata?: Metadata,
   ): Observable<SmsDlrReportResponse>;
@@ -59,7 +59,7 @@ export interface CommunicationServiceClient {
 export interface CommunicationServiceController {
   /** SMS service */
 
-  sendSMS(
+  sendSms(
     request: SendSmsRequest,
     metadata?: Metadata,
   ): Promise<SendSmsResponse> | Observable<SendSmsResponse> | SendSmsResponse;
@@ -72,7 +72,7 @@ export interface CommunicationServiceController {
     | Observable<SmsUnitBalanceResponse>
     | SmsUnitBalanceResponse;
 
-  smsDLRReport(
+  smsDlrReport(
     request: SmsDlrReportRequest,
     metadata?: Metadata,
   ):
@@ -83,7 +83,7 @@ export interface CommunicationServiceController {
 
 export function CommunicationServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ['sendSMS', 'smsUnitBalance', 'smsDLRReport'];
+    const grpcMethods: string[] = ['sendSms', 'smsUnitBalance', 'smsDlrReport'];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(
         constructor.prototype,
