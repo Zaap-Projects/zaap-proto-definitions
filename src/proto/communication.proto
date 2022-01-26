@@ -22,7 +22,7 @@ message SendSMSRequest {
 message SendSMSResponse {
     oneof response {
         SendSMSSucessResponse success = 1;
-        SendSMSSucessResponse failure = 2;
+        SendSMSFailureResponse failure = 2;
     }
 }
 
