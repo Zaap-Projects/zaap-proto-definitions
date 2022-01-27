@@ -2,13 +2,16 @@ syntax = "proto3";
 
 import "src/proto/user.proto";
 import "src/proto/entities/auth_entity.proto";
+import "src/proto/entities/shared/phone_number.proto";
+import "src/proto/entities/shared/message_response.proto";
 
 package authService;
 
 service AuthService {
     rpc Token(TokensRequest) returns (TokensEntity) {};
     rpc Login(LoginRequest) returns (LoginResponse) {};
-    rpc Signup(SignupAccountRequest) returns (SignupAccountResponse) {};
+    rpc Signup(SignupAccountRequest) returns (MessageResponse) {};
+    rpc ValidateOtpCode(OtpValidationCodeRequest) returns (SignupAccountResponse) {};
 }
 
 // token messages
@@ -27,4 +30,9 @@ message SignupAccountRequest {
     oneof account {
         userService.CreateUserRequest createUserRequest = 1;
     }
+}
+
+message OtpValidationCodeRequest {
+    PhoneNumber phonenumber = 1;
+    string otpCode = 2;
 }

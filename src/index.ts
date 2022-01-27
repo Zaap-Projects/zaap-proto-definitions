@@ -16,3 +16,4 @@ export * as list_meta_definitions from './proto/_nestjs/src/proto/entities/share
 export * as phone_number_definitions from './proto/_nestjs/src/proto/entities/shared/phone_number';
 export * as query_params_users_definitions from './proto/_nestjs/src/proto/entities/shared/query_params_users';
 export * as delete_status_definitions from './proto/_nestjs/src/proto/entities/shared/delete_status';
+export * as message_response_definitions from './proto/_nestjs/src/proto/entities/shared/message_response';
