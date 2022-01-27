@@ -32,7 +32,7 @@ export interface SignupAccountRequest {
 }
 
 export interface OtpValidationCodeRequest {
-  phonenumber: PhoneNumber | undefined;
+  phoneNumber: PhoneNumber | undefined;
   otpCode: string;
 }
 
