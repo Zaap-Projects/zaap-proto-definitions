@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "src/proto/user.proto";
 import "src/proto/entities/auth_entity.proto";
+import "src/proto/entities/user_entity.proto";
 import "src/proto/entities/shared/phone_number.proto";
 import "src/proto/entities/shared/message_response.proto";
 
@@ -11,7 +12,7 @@ service AuthService {
     rpc Token(TokensRequest) returns (TokensEntity) {};
     rpc Login(LoginRequest) returns (LoginResponse) {};
     rpc Signup(userService.CreateUserRequest) returns (MessageResponse) {};
-    rpc ValidateOtpCode(OtpValidationCodeRequest) returns (SignupAccountResponse) {};
+    rpc ValidateOtpCode(OtpValidationCodeRequest) returns (UserEntity) {};
 }
 
 // token messages
