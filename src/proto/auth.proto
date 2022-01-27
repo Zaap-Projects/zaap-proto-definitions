@@ -33,6 +33,6 @@ message SignupAccountRequest {
 }
 
 message OtpValidationCodeRequest {
-    PhoneNumber phonenumber = 1;
+    PhoneNumber phoneNumber = 1;
     string otpCode = 2;
 }
