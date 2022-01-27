@@ -4,12 +4,14 @@ import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
 import { Observable } from 'rxjs';
 import { CreateUserRequest } from '../../src/proto/user';
+import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import { Metadata } from '@grpc/grpc-js';
 import {
   TokensEntity,
   LoginResponse,
   SignupAccountResponse,
 } from '../../src/proto/entities/auth_entity';
+import { MessageResponse } from '../../src/proto/entities/shared/message_response';
 
 export const protobufPackage = 'authService';
 
@@ -29,6 +31,11 @@ export interface SignupAccountRequest {
   createUserRequest: CreateUserRequest | undefined;
 }
 
+export interface OtpValidationCodeRequest {
+  phonenumber: PhoneNumber | undefined;
+  otpCode: string;
+}
+
 export const AUTH_SERVICE_PACKAGE_NAME = 'authService';
 
 export interface AuthServiceClient {
@@ -38,6 +45,11 @@ export interface AuthServiceClient {
 
   signup(
     request: SignupAccountRequest,
+    metadata?: Metadata,
+  ): Observable<MessageResponse>;
+
+  validateOtpCode(
+    request: OtpValidationCodeRequest,
     metadata?: Metadata,
   ): Observable<SignupAccountResponse>;
 }
@@ -56,6 +68,11 @@ export interface AuthServiceController {
   signup(
     request: SignupAccountRequest,
     metadata?: Metadata,
+  ): Promise<MessageResponse> | Observable<MessageResponse> | MessageResponse;
+
+  validateOtpCode(
+    request: OtpValidationCodeRequest,
+    metadata?: Metadata,
   ):
     | Promise<SignupAccountResponse>
     | Observable<SignupAccountResponse>
@@ -64,7 +81,12 @@ export interface AuthServiceController {
 
 export function AuthServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ['token', 'login', 'signup'];
+    const grpcMethods: string[] = [
+      'token',
+      'login',
+      'signup',
+      'validateOtpCode',
+    ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(
         constructor.prototype,
