@@ -3,7 +3,6 @@ import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices';
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
 import { Observable } from 'rxjs';
-import { CreateUserRequest } from '../../src/proto/user';
 import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import { Metadata } from '@grpc/grpc-js';
 import {
@@ -12,6 +11,7 @@ import {
   SignupAccountResponse,
 } from '../../src/proto/entities/auth_entity';
 import { MessageResponse } from '../../src/proto/entities/shared/message_response';
+import { CreateUserRequest } from '../../src/proto/user';
 
 export const protobufPackage = 'authService';
 
@@ -24,11 +24,6 @@ export interface TokensRequest {
 export interface LoginRequest {
   username: string;
   password: string;
-}
-
-/** TODO: add other params eg. CreateCourierRequest, CreateFleetRequest */
-export interface SignupAccountRequest {
-  createUserRequest: CreateUserRequest | undefined;
 }
 
 export interface OtpValidationCodeRequest {
@@ -44,7 +39,7 @@ export interface AuthServiceClient {
   login(request: LoginRequest, metadata?: Metadata): Observable<LoginResponse>;
 
   signup(
-    request: SignupAccountRequest,
+    request: CreateUserRequest,
     metadata?: Metadata,
   ): Observable<MessageResponse>;
 
@@ -66,7 +61,7 @@ export interface AuthServiceController {
   ): Promise<LoginResponse> | Observable<LoginResponse> | LoginResponse;
 
   signup(
-    request: SignupAccountRequest,
+    request: CreateUserRequest,
     metadata?: Metadata,
   ): Promise<MessageResponse> | Observable<MessageResponse> | MessageResponse;
 
