@@ -8,9 +8,9 @@ import { Metadata } from '@grpc/grpc-js';
 import {
   TokensEntity,
   LoginResponse,
-  SignupAccountResponse,
 } from '../../src/proto/entities/auth_entity';
 import { MessageResponse } from '../../src/proto/entities/shared/message_response';
+import { UserEntity } from '../../src/proto/entities/user_entity';
 import { CreateUserRequest } from '../../src/proto/user';
 
 export const protobufPackage = 'authService';
@@ -46,7 +46,7 @@ export interface AuthServiceClient {
   validateOtpCode(
     request: OtpValidationCodeRequest,
     metadata?: Metadata,
-  ): Observable<SignupAccountResponse>;
+  ): Observable<UserEntity>;
 }
 
 export interface AuthServiceController {
@@ -68,10 +68,7 @@ export interface AuthServiceController {
   validateOtpCode(
     request: OtpValidationCodeRequest,
     metadata?: Metadata,
-  ):
-    | Promise<SignupAccountResponse>
-    | Observable<SignupAccountResponse>
-    | SignupAccountResponse;
+  ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 }
 
 export function AuthServiceControllerMethods() {
