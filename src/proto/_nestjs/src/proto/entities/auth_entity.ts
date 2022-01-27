@@ -15,10 +15,6 @@ export interface LoginResponse {
   user: UserEntity | undefined;
 }
 
-export interface SignupAccountResponse {
-  user: UserEntity | undefined;
-}
-
 export const _PACKAGE_NAME = '';
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',
