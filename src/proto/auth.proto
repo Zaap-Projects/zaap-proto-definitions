@@ -12,7 +12,7 @@ service AuthService {
     rpc Token(TokensRequest) returns (TokensEntity) {};
     rpc Login(LoginRequest) returns (LoginResponse) {};
     rpc Signup(userService.CreateUserRequest) returns (MessageResponse) {};
-    rpc ValidateOtpCode(OtpValidationCodeRequest) returns (UserEntity) {};
+    rpc VerifyOtpCode(OtpValidationCodeRequest) returns (UserEntity) {};
 }
 
 // token messages
