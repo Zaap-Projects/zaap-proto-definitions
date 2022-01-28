@@ -43,7 +43,7 @@ export interface AuthServiceClient {
     metadata?: Metadata,
   ): Observable<MessageResponse>;
 
-  validateOtpCode(
+  verifyOtpCode(
     request: OtpValidationCodeRequest,
     metadata?: Metadata,
   ): Observable<UserEntity>;
@@ -65,7 +65,7 @@ export interface AuthServiceController {
     metadata?: Metadata,
   ): Promise<MessageResponse> | Observable<MessageResponse> | MessageResponse;
 
-  validateOtpCode(
+  verifyOtpCode(
     request: OtpValidationCodeRequest,
     metadata?: Metadata,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
@@ -73,12 +73,7 @@ export interface AuthServiceController {
 
 export function AuthServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = [
-      'token',
-      'login',
-      'signup',
-      'validateOtpCode',
-    ];
+    const grpcMethods: string[] = ['token', 'login', 'signup', 'verifyOtpCode'];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(
         constructor.prototype,
