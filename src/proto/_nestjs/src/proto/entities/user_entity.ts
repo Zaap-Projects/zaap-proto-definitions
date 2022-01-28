@@ -17,6 +17,7 @@ export interface UserEntity {
   lastname: string;
   phoneNumber: PhoneNumber | undefined;
   email: string;
+  type: string;
   createdAt: string;
   updatedAt: string;
 }
