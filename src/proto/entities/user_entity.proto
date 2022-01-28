@@ -14,6 +14,7 @@ message UserEntity {
     string lastname = 3;
     PhoneNumber phoneNumber = 4;
     string email = 5;
-    string createdAt = 6;
-    string updatedAt = 7;
+    string type = 6;
+    string createdAt = 7;
+    string updatedAt = 8;
 }
