@@ -29,6 +29,17 @@ message CreateWorkGroupRequest {
     string author = 4;
 }
 
+message CreateWorkGroupResponse {
+    string id = 1;
+    string name = 2;
+    AreaScope scope = 3;
+    string objective = 4;
+    string author = 5;
+    repeated string members = 6;
+    string createdAt = 7;
+    string updatedAt = 8;
+}
+
 // work-group entities
 message WorkGroupEntity {
     string id = 1;

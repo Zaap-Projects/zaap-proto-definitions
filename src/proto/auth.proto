@@ -26,7 +26,7 @@ service AuthService {
 
     // defines a scope to user-role (eg. operations - work group)
     rpc GetWorkGroups(QueryParamsUsers) returns (WorkGroupEntityList) {}
-    rpc CreateWorkGroup(CreateWorkGroupRequest) returns (WorkGroupEntity) {}
+    rpc CreateWorkGroup(CreateWorkGroupRequest) returns (CreateWorkGroupResponse) {}
 }
 
 // token messages
