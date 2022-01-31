@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
-import { Any } from '../../../../google/protobuf/any';
+import { UserEntity } from '../../../../src/proto/entities/user_entity';
 import { ListMeta } from '../../../../src/proto/entities/shared/list_meta';
 
 export const protobufPackage = '';
@@ -34,8 +34,8 @@ export interface WorkGroupEntity {
   name: string;
   scope: AreaScope | undefined;
   objective: string;
-  author: Any | undefined;
-  members: Any[];
+  author: UserEntity | undefined;
+  members: UserEntity[];
   createdAt: string;
   updatedAt: string;
 }

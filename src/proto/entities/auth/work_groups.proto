@@ -1,8 +1,7 @@
 syntax = "proto3";
 
-import "google/protobuf/any.proto";
-
 import "src/proto/entities/shared/list_meta.proto";
+import "src/proto/entities/user_entity.proto";
 
 // work-group message
 // `work-groups` are sects in zaap that handles different tasks in product 
@@ -36,8 +35,8 @@ message WorkGroupEntity {
     string name = 2;
     AreaScope scope = 3;
     string objective = 4;
-    google.protobuf.Any author = 5;
-    repeated google.protobuf.Any members = 6;
+    UserEntity author = 5;
+    repeated UserEntity members = 6;
     string createdAt = 7;
     string updatedAt = 8;
 }
