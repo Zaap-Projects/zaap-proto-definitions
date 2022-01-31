@@ -19,7 +19,7 @@ import {
 } from '../../src/proto/entities/auth/auth_roles';
 import {
   WorkGroupEntityList,
-  WorkGroupEntity,
+  CreateWorkGroupResponse,
   CreateWorkGroupRequest,
 } from '../../src/proto/entities/auth/work_groups';
 import { CreateUserRequest } from '../../src/proto/user';
@@ -87,7 +87,7 @@ export interface AuthServiceClient {
   createWorkGroup(
     request: CreateWorkGroupRequest,
     metadata?: Metadata,
-  ): Observable<WorkGroupEntity>;
+  ): Observable<CreateWorkGroupResponse>;
 }
 
 export interface AuthServiceController {
@@ -144,7 +144,10 @@ export interface AuthServiceController {
   createWorkGroup(
     request: CreateWorkGroupRequest,
     metadata?: Metadata,
-  ): Promise<WorkGroupEntity> | Observable<WorkGroupEntity> | WorkGroupEntity;
+  ):
+    | Promise<CreateWorkGroupResponse>
+    | Observable<CreateWorkGroupResponse>
+    | CreateWorkGroupResponse;
 }
 
 export function AuthServiceControllerMethods() {

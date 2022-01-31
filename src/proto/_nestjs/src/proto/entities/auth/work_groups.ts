@@ -28,6 +28,17 @@ export interface CreateWorkGroupRequest {
   author: string;
 }
 
+export interface CreateWorkGroupResponse {
+  id: string;
+  name: string;
+  scope: AreaScope | undefined;
+  objective: string;
+  author: string;
+  members: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 /** work-group entities */
 export interface WorkGroupEntity {
   id: string;
