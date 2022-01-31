@@ -31,7 +31,7 @@ export interface CreateWorkGroupRequest {
 export interface CreateWorkGroupResponse {
   id: string;
   name: string;
-  scope: AreaScope | undefined;
+  scope?: AreaScope | undefined;
   objective: string;
   author: string;
   members: string[];
