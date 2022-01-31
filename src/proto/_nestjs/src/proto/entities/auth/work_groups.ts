@@ -6,10 +6,23 @@ import { ListMeta } from '../../../../src/proto/entities/shared/list_meta';
 
 export const protobufPackage = '';
 
-/** `scope` here reflects area of influence in control by a specific work-group */
+/** `scope` here reflects area of influence in control by a specific work-group e.g. GLOBAL, REGIONAL, DISTRICT, CITY */
+export interface AreaScope {
+  areaTag: string;
+}
+
+export enum AreaScope_SCOPE {
+  GLOBAL = 0,
+  COUNTRY = 1,
+  REGION = 2,
+  DISTRICT = 3,
+  CITY = 4,
+  UNRECOGNIZED = -1,
+}
+
 export interface CreateWorkGroupRequest {
   name: string;
-  scope: string;
+  scope: AreaScope | undefined;
   objective: string;
   author: string;
 }
@@ -18,8 +31,9 @@ export interface CreateWorkGroupRequest {
 export interface WorkGroupEntity {
   id: string;
   name: string;
+  scope: AreaScope | undefined;
   objective: string;
-  author: string[];
+  author: string;
   members: Any[];
   createdAt: string;
   updatedAt: string;

@@ -8,10 +8,22 @@ import "src/proto/entities/shared/list_meta.proto";
 // `work-groups` are sects in zaap that handles different tasks in product 
 // development and management e.g. operation department, marketing etc
 
-// `scope` here reflects area of influence in control by a specific work-group
+
+// `scope` here reflects area of influence in control by a specific work-group e.g. GLOBAL, REGIONAL, DISTRICT, CITY
+message AreaScope {
+    enum SCOPE {
+        GLOBAL = 0;
+        COUNTRY = 1;
+        REGION = 2;
+        DISTRICT = 3;
+        CITY = 4;
+    };
+    string areaTag = 2;
+}
+
 message CreateWorkGroupRequest {
     string name = 1;
-    string scope = 2;
+    AreaScope scope = 2;
     string objective = 3;
     string author = 4;
 }
@@ -20,11 +32,12 @@ message CreateWorkGroupRequest {
 message WorkGroupEntity {
     string id = 1;
     string name = 2;
-    string objective = 3;
-    repeated string author = 4;
-    repeated google.protobuf.Any members = 5;
-    string createdAt = 6;
-    string updatedAt = 7;
+    AreaScope scope = 3;
+    string objective = 4;
+    string author = 5;
+    repeated google.protobuf.Any members = 6;
+    string createdAt = 7;
+    string updatedAt = 8;
 }
 
 message WorkGroupEntityList {
