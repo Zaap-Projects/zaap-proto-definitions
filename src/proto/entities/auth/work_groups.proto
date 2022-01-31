@@ -10,14 +10,16 @@ import "src/proto/entities/shared/list_meta.proto";
 
 
 // `scope` here reflects area of influence in control by a specific work-group e.g. GLOBAL, REGIONAL, DISTRICT, CITY
+enum SCOPE {
+    GLOBAL = 0;
+    COUNTRY = 1;
+    REGION = 2;
+    DISTRICT = 3;
+    CITY = 4;
+};
+
 message AreaScope {
-    enum SCOPE {
-        GLOBAL = 0;
-        COUNTRY = 1;
-        REGION = 2;
-        DISTRICT = 3;
-        CITY = 4;
-    };
+    SCOPE scope = 1;
     string areaTag = 2;
 }
 
