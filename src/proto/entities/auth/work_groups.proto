@@ -36,7 +36,7 @@ message WorkGroupEntity {
     string name = 2;
     AreaScope scope = 3;
     string objective = 4;
-    string author = 5;
+    google.protobuf.Any author = 5;
     repeated google.protobuf.Any members = 6;
     string createdAt = 7;
     string updatedAt = 8;

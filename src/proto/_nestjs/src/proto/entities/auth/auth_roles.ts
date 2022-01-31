@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
+import { Any } from '../../../../google/protobuf/any';
 import { ListMeta } from '../../../../src/proto/entities/shared/list_meta';
 import { AccountRole } from '../../../../src/proto/entities/shared/account_role';
 
@@ -10,7 +11,7 @@ export interface RoleEntity {
   id: string;
   name: string;
   permissions: string[];
-  author: string;
+  author: Any | undefined;
   createdAt: string;
   updatedAt: string;
 }
@@ -42,7 +43,7 @@ export interface AccountRoleEntity {
   id: string;
   userId: string;
   role: AccountRole | undefined;
-  author: string;
+  author: Any | undefined;
   createdAt: string;
   updatedAt: string;
 }
