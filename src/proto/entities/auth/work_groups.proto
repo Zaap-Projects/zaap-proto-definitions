@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+import "src/proto/entities/shared/list_meta.proto";
+
+// work-group message
+// `work-groups` are sects in zaap that handles different tasks in product 
+// development and management e.g. operation department, marketing etc
+
+// `scope` here reflects area of influence in control by a specific work-group
+message CreateWorkGroupRequest {
+    string name = 1;
+    string scope = 2;
+    string objective = 3;
+    string author = 4;
+}
+
+// work-group entities
+message WorkGroupEntity {
+    string id = 1;
+    string name = 2;
+    string objective = 3;
+    repeated string author = 4;
+    repeated google.protobuf.Any members = 5;
+    string createdAt = 6;
+    string updatedAt = 7;
+}
+
+message WorkGroupEntityList {
+    repeated WorkGroupEntity data = 1;
+    ListMeta meta = 2;
+}

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+
+import "src/proto/entities/shared/account_role.proto";
+import "src/proto/entities/shared/list_meta.proto";
+
+message RoleEntity {
+    string id = 1;
+    string name = 2;
+    repeated string permissions = 3;
+    string author = 4;
+    string createdAt = 5;
+    string updatedAt = 6;
+}
+
+message RoleEntityList {
+    repeated RoleEntity roles = 1;
+    ListMeta meta = 2;
+}
+
+// create-role message
+message RoleRequestEntity {
+    string name = 1;
+    repeated string permissions = 2;
+    string author = 3;
+}
+
+message CreateRolesRequest {
+   repeated RoleRequestEntity roles = 1;
+}
+
+// assign-roles message
+message AssignRolesRequest {
+    string userId = 1;
+    AccountRole role = 2;
+    string author = 3;
+}
+
+message AccountRoleEntity {
+    string id = 1;
+    string userId = 2;
+    AccountRole role = 3;
+    string author = 4;
+    string createdAt = 5;
+    string updatedAt = 6;
+}

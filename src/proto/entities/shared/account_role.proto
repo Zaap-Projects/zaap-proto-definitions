@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message AccountRole {
+    string name = 1;
+    string workGroup = 2;
+    repeated string permissions = 3;
+}

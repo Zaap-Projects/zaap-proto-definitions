@@ -11,7 +11,19 @@ import {
 } from '../../src/proto/entities/auth_entity';
 import { MessageResponse } from '../../src/proto/entities/shared/message_response';
 import { UserEntity } from '../../src/proto/entities/user_entity';
+import {
+  RoleEntityList,
+  AccountRoleEntity,
+  CreateRolesRequest,
+  AssignRolesRequest,
+} from '../../src/proto/entities/auth/auth_roles';
+import {
+  WorkGroupEntityList,
+  WorkGroupEntity,
+  CreateWorkGroupRequest,
+} from '../../src/proto/entities/auth/work_groups';
 import { CreateUserRequest } from '../../src/proto/user';
+import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_users';
 
 export const protobufPackage = 'authService';
 
@@ -47,6 +59,35 @@ export interface AuthServiceClient {
     request: OtpValidationCodeRequest,
     metadata?: Metadata,
   ): Observable<UserEntity>;
+
+  /** comprises of permission-sets used to define user-resource access */
+
+  getRoles(
+    request: QueryParamsUsers,
+    metadata?: Metadata,
+  ): Observable<RoleEntityList>;
+
+  createRoles(
+    request: CreateRolesRequest,
+    metadata?: Metadata,
+  ): Observable<RoleEntityList>;
+
+  assignRoles(
+    request: AssignRolesRequest,
+    metadata?: Metadata,
+  ): Observable<AccountRoleEntity>;
+
+  /** defines a scope to user-role (eg. operations - work group) */
+
+  getWorkGroups(
+    request: QueryParamsUsers,
+    metadata?: Metadata,
+  ): Observable<WorkGroupEntityList>;
+
+  createWorkGroup(
+    request: CreateWorkGroupRequest,
+    metadata?: Metadata,
+  ): Observable<WorkGroupEntity>;
 }
 
 export interface AuthServiceController {
@@ -69,11 +110,56 @@ export interface AuthServiceController {
     request: OtpValidationCodeRequest,
     metadata?: Metadata,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
+
+  /** comprises of permission-sets used to define user-resource access */
+
+  getRoles(
+    request: QueryParamsUsers,
+    metadata?: Metadata,
+  ): Promise<RoleEntityList> | Observable<RoleEntityList> | RoleEntityList;
+
+  createRoles(
+    request: CreateRolesRequest,
+    metadata?: Metadata,
+  ): Promise<RoleEntityList> | Observable<RoleEntityList> | RoleEntityList;
+
+  assignRoles(
+    request: AssignRolesRequest,
+    metadata?: Metadata,
+  ):
+    | Promise<AccountRoleEntity>
+    | Observable<AccountRoleEntity>
+    | AccountRoleEntity;
+
+  /** defines a scope to user-role (eg. operations - work group) */
+
+  getWorkGroups(
+    request: QueryParamsUsers,
+    metadata?: Metadata,
+  ):
+    | Promise<WorkGroupEntityList>
+    | Observable<WorkGroupEntityList>
+    | WorkGroupEntityList;
+
+  createWorkGroup(
+    request: CreateWorkGroupRequest,
+    metadata?: Metadata,
+  ): Promise<WorkGroupEntity> | Observable<WorkGroupEntity> | WorkGroupEntity;
 }
 
 export function AuthServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ['token', 'login', 'signup', 'verifyOtpCode'];
+    const grpcMethods: string[] = [
+      'token',
+      'login',
+      'signup',
+      'verifyOtpCode',
+      'getRoles',
+      'createRoles',
+      'assignRoles',
+      'getWorkGroups',
+      'createWorkGroup',
+    ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(
         constructor.prototype,
