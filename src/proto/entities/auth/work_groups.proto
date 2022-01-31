@@ -32,7 +32,7 @@ message CreateWorkGroupRequest {
 message CreateWorkGroupResponse {
     string id = 1;
     string name = 2;
-    AreaScope scope = 3;
+    optional AreaScope scope = 3;
     string objective = 4;
     string author = 5;
     repeated string members = 6;

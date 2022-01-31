@@ -17,8 +17,9 @@ generate_nestjs_proto_definitions() {
     #     echo "$f"
     #     protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=nestJs=true --ts_proto_out=./src/proto/nestjs f
     # done
-    protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=stringEnums=true --ts_proto_opt=nestJs=true --ts_proto_out=./src/proto/_nestjs ./src/proto/auth.proto
-    protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=stringEnums=true --ts_proto_opt=nestJs=true --ts_proto_out=./src/proto/_nestjs ./src/proto/communication.proto
+    # --ts_proto_opt=stringEnums=true
+    protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=nestJs=true --ts_proto_out=./src/proto/_nestjs ./src/proto/auth.proto
+    protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=nestJs=true --ts_proto_out=./src/proto/_nestjs ./src/proto/communication.proto
     # protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=addGrpcMetadata=true --ts_proto_opt=nestJs=true --ts_proto_out=./src/proto/_nestjs ./src/proto/user.proto
 }
 

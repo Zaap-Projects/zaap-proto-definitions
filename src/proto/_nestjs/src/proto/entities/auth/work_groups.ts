@@ -8,12 +8,12 @@ export const protobufPackage = '';
 
 /** `scope` here reflects area of influence in control by a specific work-group e.g. GLOBAL, REGIONAL, DISTRICT, CITY */
 export enum SCOPE {
-  GLOBAL = 'GLOBAL',
-  COUNTRY = 'COUNTRY',
-  REGION = 'REGION',
-  DISTRICT = 'DISTRICT',
-  CITY = 'CITY',
-  UNRECOGNIZED = 'UNRECOGNIZED',
+  GLOBAL = 0,
+  COUNTRY = 1,
+  REGION = 2,
+  DISTRICT = 3,
+  CITY = 4,
+  UNRECOGNIZED = -1,
 }
 
 export interface AreaScope {
@@ -31,7 +31,7 @@ export interface CreateWorkGroupRequest {
 export interface CreateWorkGroupResponse {
   id: string;
   name: string;
-  scope: AreaScope | undefined;
+  scope?: AreaScope | undefined;
   objective: string;
   author: string;
   members: string[];
