@@ -5,6 +5,11 @@ import "src/proto/entities/auth_entity.proto";
 import "src/proto/entities/user_entity.proto";
 import "src/proto/entities/shared/phone_number.proto";
 import "src/proto/entities/shared/message_response.proto";
+import "src/proto/entities/shared/query_params_users.proto";
+
+
+import "src/proto/entities/auth/auth_roles.proto";
+import "src/proto/entities/auth/work_groups.proto";
 
 package authService;
 
@@ -13,6 +18,15 @@ service AuthService {
     rpc Login(LoginRequest) returns (LoginResponse) {};
     rpc Signup(userService.CreateUserRequest) returns (MessageResponse) {};
     rpc VerifyOtpCode(OtpValidationCodeRequest) returns (UserEntity) {};
+
+    // comprises of permission-sets used to define user-resource access
+    rpc GetRoles(QueryParamsUsers) returns (RoleEntityList) {}
+    rpc CreateRoles(CreateRolesRequest) returns (RoleEntityList) {}
+    rpc AssignRoles(AssignRolesRequest) returns (AccountRoleEntity) {}
+
+    // defines a scope to user-role (eg. operations - work group)
+    rpc GetWorkGroups(QueryParamsUsers) returns (WorkGroupEntityList) {}
+    rpc CreateWorkGroup(CreateWorkGroupRequest) returns (WorkGroupEntity) {}
 }
 
 // token messages
