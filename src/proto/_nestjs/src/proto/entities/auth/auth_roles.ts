@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
-import { Any } from '../../../../google/protobuf/any';
+import { UserEntity } from '../../../../src/proto/entities/user_entity';
 import { ListMeta } from '../../../../src/proto/entities/shared/list_meta';
 import { AccountRole } from '../../../../src/proto/entities/shared/account_role';
 
@@ -11,7 +11,7 @@ export interface RoleEntity {
   id: string;
   name: string;
   permissions: string[];
-  author: Any | undefined;
+  author: UserEntity | undefined;
   createdAt: string;
   updatedAt: string;
 }
@@ -22,14 +22,14 @@ export interface RoleEntityList {
 }
 
 /** create-role message */
-export interface RoleRequestEntity {
+export interface RoleRequest {
   name: string;
   permissions: string[];
   author: string;
 }
 
 export interface CreateRolesRequest {
-  roles: RoleRequestEntity[];
+  roles: RoleRequest[];
 }
 
 /** assign-roles message */
@@ -43,7 +43,7 @@ export interface AccountRoleEntity {
   id: string;
   userId: string;
   role: AccountRole | undefined;
-  author: Any | undefined;
+  author: UserEntity | undefined;
   createdAt: string;
   updatedAt: string;
 }

@@ -1,15 +1,14 @@
 syntax = "proto3";
 
-import "google/protobuf/any.proto";
-
 import "src/proto/entities/shared/account_role.proto";
 import "src/proto/entities/shared/list_meta.proto";
+import "src/proto/entities/user_entity.proto";
 
 message RoleEntity {
     string id = 1;
     string name = 2;
     repeated string permissions = 3;
-    google.protobuf.Any author = 4;
+    UserEntity  author = 4;
     string createdAt = 5;
     string updatedAt = 6;
 }
@@ -20,14 +19,14 @@ message RoleEntityList {
 }
 
 // create-role message
-message RoleRequestEntity {
+message RoleRequest {
     string name = 1;
     repeated string permissions = 2;
     string author = 3;
 }
 
 message CreateRolesRequest {
-   repeated RoleRequestEntity roles = 1;
+   repeated RoleRequest roles = 1;
 }
 
 // assign-roles message
@@ -41,7 +40,7 @@ message AccountRoleEntity {
     string id = 1;
     string userId = 2;
     AccountRole role = 3;
-    google.protobuf.Any author = 4;
+    UserEntity  author = 4;
     string createdAt = 5;
     string updatedAt = 6;
 }
