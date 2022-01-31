@@ -34,7 +34,7 @@ export interface WorkGroupEntity {
   name: string;
   scope: AreaScope | undefined;
   objective: string;
-  author: string;
+  author: Any | undefined;
   members: Any[];
   createdAt: string;
   updatedAt: string;
