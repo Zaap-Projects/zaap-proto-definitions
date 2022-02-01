@@ -18,7 +18,7 @@ export interface RoleEntity {
 
 export interface RoleEntityList {
   roles: RoleEntity[];
-  meta: ListMeta | undefined;
+  meta?: ListMeta | undefined;
 }
 
 /** create-role message */
