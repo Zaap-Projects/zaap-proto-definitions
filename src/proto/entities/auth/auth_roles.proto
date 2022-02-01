@@ -3,11 +3,7 @@ syntax = "proto3";
 import "src/proto/entities/shared/account_role.proto";
 import "src/proto/entities/shared/list_meta.proto";
 import "src/proto/entities/user_entity.proto";
-
-message PermissionEntity {
-    string name = 1;
-    repeated string permissions =2;
-}
+import "src/proto/entities/shared/permission_entity.proto";
 
 message RoleEntity {
     string id = 1;
@@ -46,7 +42,7 @@ message AccountRoleEntity {
     string id = 1;
     string userId = 2;
     AccountRole role = 3;
-    UserEntity  author = 4;
+    UserEntity author = 4;
     string createdAt = 5;
     string updatedAt = 6;
 }

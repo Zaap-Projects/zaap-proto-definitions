@@ -1,16 +1,12 @@
 /* eslint-disable */
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
+import { PermissionEntity } from '../../../../src/proto/entities/shared/permission_entity';
 import { UserEntity } from '../../../../src/proto/entities/user_entity';
 import { ListMeta } from '../../../../src/proto/entities/shared/list_meta';
 import { AccountRole } from '../../../../src/proto/entities/shared/account_role';
 
 export const protobufPackage = '';
-
-export interface PermissionEntity {
-  name: string;
-  permissions: string[];
-}
 
 export interface RoleEntity {
   id: string;

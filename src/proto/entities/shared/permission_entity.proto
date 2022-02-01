@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message PermissionEntity {
+    string name = 1;
+    repeated string permissions =2;
+}
