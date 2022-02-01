@@ -30,7 +30,7 @@ export interface RoleEntityList {
 /** create-role message */
 export interface RoleRequest {
   name: string;
-  permissions: string[];
+  permissions: PermissionEntity[];
   author: string;
 }
 

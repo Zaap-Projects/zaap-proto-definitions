@@ -27,7 +27,7 @@ message RoleEntityList {
 // create-role message
 message RoleRequest {
     string name = 1;
-    repeated string permissions = 2;
+    repeated PermissionEntity permissions = 2;
     string author = 3;
 }
 
