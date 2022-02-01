@@ -16,6 +16,7 @@ message RoleEntity {
 message RoleEntityList {
     repeated RoleEntity roles = 1;
     optional ListMeta meta = 2;
+    optional string message = 3;
 }
 
 // create-role message
