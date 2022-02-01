@@ -1,7 +1,9 @@
 syntax = "proto3";
 
+import "src/proto/entities/shared/permission_entity.proto";
+
 message AccountRole {
     string name = 1;
-    string workGroup = 2;
-    repeated string permissions = 3;
+    repeated PermissionEntity permissions = 2;
+    string workGroup = 3;
 }
