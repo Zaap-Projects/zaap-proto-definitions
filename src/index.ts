@@ -22,3 +22,4 @@ export * as phone_number_definitions from './proto/_nestjs/src/proto/entities/sh
 export * as query_params_users_definitions from './proto/_nestjs/src/proto/entities/shared/query_params_users';
 export * as delete_status_definitions from './proto/_nestjs/src/proto/entities/shared/delete_status';
 export * as message_response_definitions from './proto/_nestjs/src/proto/entities/shared/message_response';
+export * as permission_entity_definitions from './proto/_nestjs/src/proto/entities/shared/permission_entity';
