@@ -23,6 +23,7 @@ import {
   CreateWorkGroupRequest,
 } from '../../src/proto/entities/auth/work_groups';
 import { CreateUserRequest } from '../../src/proto/user';
+import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
 import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_users';
 
 export const protobufPackage = 'authService';
@@ -63,7 +64,7 @@ export interface AuthServiceClient {
   /** comprises of permission-sets used to define user-resource access */
 
   getRoles(
-    request: QueryParamsUsers,
+    request: EmptyValue,
     metadata?: Metadata,
   ): Observable<RoleEntityList>;
 
@@ -114,7 +115,7 @@ export interface AuthServiceController {
   /** comprises of permission-sets used to define user-resource access */
 
   getRoles(
-    request: QueryParamsUsers,
+    request: EmptyValue,
     metadata?: Metadata,
   ): Promise<RoleEntityList> | Observable<RoleEntityList> | RoleEntityList;
 
