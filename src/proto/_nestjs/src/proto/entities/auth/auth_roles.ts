@@ -7,10 +7,15 @@ import { AccountRole } from '../../../../src/proto/entities/shared/account_role'
 
 export const protobufPackage = '';
 
+export interface PermissionEntity {
+  name: string;
+  permissions: string[];
+}
+
 export interface RoleEntity {
   id: string;
   name: string;
-  permissions: string[];
+  permissions: PermissionEntity[];
   author: UserEntity | undefined;
   createdAt: string;
   updatedAt: string;
