@@ -6,6 +6,7 @@ import "src/proto/entities/user_entity.proto";
 import "src/proto/entities/shared/phone_number.proto";
 import "src/proto/entities/shared/message_response.proto";
 import "src/proto/entities/shared/query_params_users.proto";
+import "src/proto/entities/shared/empty_value.proto";
 
 
 import "src/proto/entities/auth/auth_roles.proto";
@@ -20,7 +21,7 @@ service AuthService {
     rpc VerifyOtpCode(OtpValidationCodeRequest) returns (UserEntity) {};
 
     // comprises of permission-sets used to define user-resource access
-    rpc GetRoles(QueryParamsUsers) returns (RoleEntityList) {}
+    rpc GetRoles(EmptyValue) returns (RoleEntityList) {}
     rpc CreateRoles(CreateRolesRequest) returns (RoleEntityList) {}
     rpc AssignRoles(AssignRolesRequest) returns (AccountRoleEntity) {}
 
