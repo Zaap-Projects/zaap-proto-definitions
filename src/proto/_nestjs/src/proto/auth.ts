@@ -13,6 +13,7 @@ import { MessageResponse } from '../../src/proto/entities/shared/message_respons
 import { UserEntity } from '../../src/proto/entities/user_entity';
 import {
   RoleEntityList,
+  AccountRoleEntity,
   CreateRolesRequest,
   AssignRolesRequest,
 } from '../../src/proto/entities/auth/auth_roles';
@@ -75,7 +76,7 @@ export interface AuthServiceClient {
   assignRoles(
     request: AssignRolesRequest,
     metadata?: Metadata,
-  ): Observable<MessageResponse>;
+  ): Observable<AccountRoleEntity>;
 
   /** defines a scope to user-role (eg. operations - work group) */
 
@@ -126,7 +127,10 @@ export interface AuthServiceController {
   assignRoles(
     request: AssignRolesRequest,
     metadata?: Metadata,
-  ): Promise<MessageResponse> | Observable<MessageResponse> | MessageResponse;
+  ):
+    | Promise<AccountRoleEntity>
+    | Observable<AccountRoleEntity>
+    | AccountRoleEntity;
 
   /** defines a scope to user-role (eg. operations - work group) */
 

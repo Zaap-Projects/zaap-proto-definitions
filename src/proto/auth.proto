@@ -23,7 +23,7 @@ service AuthService {
     // comprises of permission-sets used to define user-resource access
     rpc GetRoles(EmptyValue) returns (RoleEntityList) {}
     rpc CreateRoles(CreateRolesRequest) returns (RoleEntityList) {}
-    rpc AssignRoles(AssignRolesRequest) returns (MessageResponse) {}
+    rpc AssignRoles(AssignRolesRequest) returns (AccountRoleEntity) {}
 
     // defines a scope to user-role (eg. operations - work group)
     rpc GetWorkGroups(QueryParamsUsers) returns (WorkGroupEntityList) {}
