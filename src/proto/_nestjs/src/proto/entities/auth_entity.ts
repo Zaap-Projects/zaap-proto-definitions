@@ -15,6 +15,11 @@ export interface LoginResponse {
   user: UserEntity | undefined;
 }
 
+export interface ValidateAccessCredentialsResponse {
+  message: string;
+  isValidCredentials: boolean;
+}
+
 export const _PACKAGE_NAME = '';
 
 // If you get a compile-error about 'Constructor<Long> and ... have no overlap',
