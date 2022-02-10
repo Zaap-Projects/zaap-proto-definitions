@@ -11,3 +11,8 @@ message LoginResponse {
     TokensEntity tokens = 1;
     UserEntity user = 2;
 }
+
+message ValidateAccessCredentialsResponse {
+    string message = 1;
+    bool isValidCredentials = 2;
+}

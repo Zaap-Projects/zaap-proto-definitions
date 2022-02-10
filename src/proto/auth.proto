@@ -16,6 +16,7 @@ package authService;
 
 service AuthService {
     rpc Token(TokensRequest) returns (TokensEntity) {};
+    rpc ValidateAccessCredentials(EmptyValue) returns (ValidateAccessCredentialsResponse) {}
     rpc Login(LoginRequest) returns (LoginResponse) {};
     rpc Signup(userService.CreateUserRequest) returns (MessageResponse) {};
     rpc VerifyOtpCode(OtpValidationCodeRequest) returns (UserEntity) {};

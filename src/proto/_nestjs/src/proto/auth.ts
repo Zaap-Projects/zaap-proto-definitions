@@ -7,6 +7,7 @@ import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import { Metadata } from '@grpc/grpc-js';
 import {
   TokensEntity,
+  ValidateAccessCredentialsResponse,
   LoginResponse,
 } from '../../src/proto/entities/auth_entity';
 import { MessageResponse } from '../../src/proto/entities/shared/message_response';
@@ -22,8 +23,8 @@ import {
   CreateWorkGroupResponse,
   CreateWorkGroupRequest,
 } from '../../src/proto/entities/auth/work_groups';
-import { CreateUserRequest } from '../../src/proto/user';
 import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
+import { CreateUserRequest } from '../../src/proto/user';
 import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_users';
 
 export const protobufPackage = 'authService';
@@ -48,6 +49,11 @@ export const AUTH_SERVICE_PACKAGE_NAME = 'authService';
 
 export interface AuthServiceClient {
   token(request: TokensRequest, metadata?: Metadata): Observable<TokensEntity>;
+
+  validateAccessCredentials(
+    request: EmptyValue,
+    metadata?: Metadata,
+  ): Observable<ValidateAccessCredentialsResponse>;
 
   login(request: LoginRequest, metadata?: Metadata): Observable<LoginResponse>;
 
@@ -96,6 +102,14 @@ export interface AuthServiceController {
     request: TokensRequest,
     metadata?: Metadata,
   ): Promise<TokensEntity> | Observable<TokensEntity> | TokensEntity;
+
+  validateAccessCredentials(
+    request: EmptyValue,
+    metadata?: Metadata,
+  ):
+    | Promise<ValidateAccessCredentialsResponse>
+    | Observable<ValidateAccessCredentialsResponse>
+    | ValidateAccessCredentialsResponse;
 
   login(
     request: LoginRequest,
@@ -155,6 +169,7 @@ export function AuthServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
       'token',
+      'validateAccessCredentials',
       'login',
       'signup',
       'verifyOtpCode',
