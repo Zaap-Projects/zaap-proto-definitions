@@ -8,7 +8,6 @@ import "src/proto/entities/shared/message_response.proto";
 import "src/proto/entities/shared/query_params_users.proto";
 import "src/proto/entities/shared/empty_value.proto";
 
-
 import "src/proto/entities/auth/auth_roles.proto";
 import "src/proto/entities/auth/work_groups.proto";
 
