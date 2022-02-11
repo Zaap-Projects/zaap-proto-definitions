@@ -10,6 +10,7 @@ import {
   UserEntityList,
 } from '../../src/proto/entities/user_entity';
 import { DeleteStatus } from '../../src/proto/entities/shared/delete_status';
+import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
 import {
   IdParams,
   IdParamsList,
@@ -17,6 +18,10 @@ import {
 import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_users';
 
 export const protobufPackage = 'userService';
+
+export interface GeneratePublicAccessTokenResponse {
+  token: string;
+}
 
 /** create-user messages */
 export interface CreateUserRequest {
@@ -37,6 +42,11 @@ export interface UpdateUserRequest {
 export const USER_SERVICE_PACKAGE_NAME = 'userService';
 
 export interface UserServiceClient {
+  generatePublicAccessToken(
+    request: EmptyValue,
+    metadata?: Metadata,
+  ): Observable<GeneratePublicAccessTokenResponse>;
+
   getUserById(request: IdParams, metadata?: Metadata): Observable<UserEntity>;
 
   getMultipleUsers(
@@ -61,6 +71,14 @@ export interface UserServiceClient {
 }
 
 export interface UserServiceController {
+  generatePublicAccessToken(
+    request: EmptyValue,
+    metadata?: Metadata,
+  ):
+    | Promise<GeneratePublicAccessTokenResponse>
+    | Observable<GeneratePublicAccessTokenResponse>
+    | GeneratePublicAccessTokenResponse;
+
   getUserById(
     request: IdParams,
     metadata?: Metadata,
@@ -90,6 +108,7 @@ export interface UserServiceController {
 export function UserServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
+      'generatePublicAccessToken',
       'getUserById',
       'getMultipleUsers',
       'createUser',
