@@ -4,7 +4,8 @@ import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
 import { Observable } from 'rxjs';
 import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
-import { Metadata } from '@grpc/grpc-js';
+import { Metadata } from '../../src/proto/entities/shared/metadata';
+import { Metadata as Metadata1 } from '@grpc/grpc-js';
 import {
   UserEntity,
   UserEntityList,
@@ -30,6 +31,7 @@ export interface CreateUserRequest {
   phoneNumber: PhoneNumber | undefined;
   email: string;
   password: string;
+  metadata: Metadata | undefined;
 }
 
 /** update-user messages */
@@ -44,36 +46,36 @@ export const USER_SERVICE_PACKAGE_NAME = 'userService';
 export interface UserServiceClient {
   generatePublicAccessToken(
     request: EmptyValue,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<GeneratePublicAccessTokenResponse>;
 
-  getUserById(request: IdParams, metadata?: Metadata): Observable<UserEntity>;
+  getUserById(request: IdParams, metadata?: Metadata1): Observable<UserEntity>;
 
   getMultipleUsers(
     request: QueryParamsUsers,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<UserEntityList>;
 
   createUser(
     request: CreateUserRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<UserEntity>;
 
   updateUser(
     request: UpdateUserRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<UserEntity>;
 
   deleteUsers(
     request: IdParamsList,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<DeleteStatus>;
 }
 
 export interface UserServiceController {
   generatePublicAccessToken(
     request: EmptyValue,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ):
     | Promise<GeneratePublicAccessTokenResponse>
     | Observable<GeneratePublicAccessTokenResponse>
@@ -81,27 +83,27 @@ export interface UserServiceController {
 
   getUserById(
     request: IdParams,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
   getMultipleUsers(
     request: QueryParamsUsers,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<UserEntityList> | Observable<UserEntityList> | UserEntityList;
 
   createUser(
     request: CreateUserRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
   updateUser(
     request: UpdateUserRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
   deleteUsers(
     request: IdParamsList,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<DeleteStatus> | Observable<DeleteStatus> | DeleteStatus;
 }
 
