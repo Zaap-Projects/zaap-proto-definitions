@@ -5,6 +5,7 @@ import "src/proto/entities/shared/phone_number.proto";
 import "src/proto/entities/shared/query_params_users.proto";
 import "src/proto/entities/shared/delete_status.proto";
 import "src/proto/entities/shared/empty_value.proto";
+import "src/proto/entities/shared/metadata.proto";
 
 import "src/proto/entities/user_entity.proto";
 
@@ -30,6 +31,7 @@ message CreateUserRequest {
     PhoneNumber phoneNumber = 3;
     string email = 4;
     string password = 5;
+    Metadata metadata = 6;
 }
 
 // update-user messages

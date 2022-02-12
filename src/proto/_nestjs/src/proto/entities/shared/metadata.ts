@@ -1,14 +1,11 @@
 /* eslint-disable */
 import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
-import { Metadata } from '../../../../src/proto/entities/shared/metadata';
 
 export const protobufPackage = '';
 
-export interface QueryParamsUsers {
-  limit?: number | undefined;
-  page?: number | undefined;
-  metadata: Metadata | undefined;
+export interface Metadata {
+  source: string;
 }
 
 export const _PACKAGE_NAME = '';
