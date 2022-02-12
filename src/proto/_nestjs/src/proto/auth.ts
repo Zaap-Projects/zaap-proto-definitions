@@ -4,7 +4,8 @@ import { util, configure } from 'protobufjs/minimal';
 import * as Long from 'long';
 import { Observable } from 'rxjs';
 import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
-import { Metadata } from '@grpc/grpc-js';
+import { Metadata } from '../../src/proto/entities/shared/metadata';
+import { Metadata as Metadata1 } from '@grpc/grpc-js';
 import {
   TokensEntity,
   ValidateAccessCredentialsResponse,
@@ -43,69 +44,70 @@ export interface LoginRequest {
 export interface OtpValidationCodeRequest {
   phoneNumber: PhoneNumber | undefined;
   otpCode: string;
+  metadata: Metadata | undefined;
 }
 
 export const AUTH_SERVICE_PACKAGE_NAME = 'authService';
 
 export interface AuthServiceClient {
-  token(request: TokensRequest, metadata?: Metadata): Observable<TokensEntity>;
+  token(request: TokensRequest, metadata?: Metadata1): Observable<TokensEntity>;
 
   validateAccessCredentials(
     request: EmptyValue,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<ValidateAccessCredentialsResponse>;
 
-  login(request: LoginRequest, metadata?: Metadata): Observable<LoginResponse>;
+  login(request: LoginRequest, metadata?: Metadata1): Observable<LoginResponse>;
 
   signup(
     request: CreateUserRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<MessageResponse>;
 
   verifyOtpCode(
     request: OtpValidationCodeRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<UserEntity>;
 
   /** comprises of permission-sets used to define user-resource access */
 
   getRoles(
     request: EmptyValue,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<RoleEntityList>;
 
   createRoles(
     request: CreateRolesRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<RoleEntityList>;
 
   assignRoles(
     request: AssignRolesRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<AccountRoleEntity>;
 
   /** defines a scope to user-role (eg. operations - work group) */
 
   getWorkGroups(
     request: QueryParamsUsers,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<WorkGroupEntityList>;
 
   createWorkGroup(
     request: CreateWorkGroupRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Observable<CreateWorkGroupResponse>;
 }
 
 export interface AuthServiceController {
   token(
     request: TokensRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<TokensEntity> | Observable<TokensEntity> | TokensEntity;
 
   validateAccessCredentials(
     request: EmptyValue,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ):
     | Promise<ValidateAccessCredentialsResponse>
     | Observable<ValidateAccessCredentialsResponse>
@@ -113,34 +115,34 @@ export interface AuthServiceController {
 
   login(
     request: LoginRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<LoginResponse> | Observable<LoginResponse> | LoginResponse;
 
   signup(
     request: CreateUserRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<MessageResponse> | Observable<MessageResponse> | MessageResponse;
 
   verifyOtpCode(
     request: OtpValidationCodeRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<UserEntity> | Observable<UserEntity> | UserEntity;
 
   /** comprises of permission-sets used to define user-resource access */
 
   getRoles(
     request: EmptyValue,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<RoleEntityList> | Observable<RoleEntityList> | RoleEntityList;
 
   createRoles(
     request: CreateRolesRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ): Promise<RoleEntityList> | Observable<RoleEntityList> | RoleEntityList;
 
   assignRoles(
     request: AssignRolesRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ):
     | Promise<AccountRoleEntity>
     | Observable<AccountRoleEntity>
@@ -150,7 +152,7 @@ export interface AuthServiceController {
 
   getWorkGroups(
     request: QueryParamsUsers,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ):
     | Promise<WorkGroupEntityList>
     | Observable<WorkGroupEntityList>
@@ -158,7 +160,7 @@ export interface AuthServiceController {
 
   createWorkGroup(
     request: CreateWorkGroupRequest,
-    metadata?: Metadata,
+    metadata?: Metadata1,
   ):
     | Promise<CreateWorkGroupResponse>
     | Observable<CreateWorkGroupResponse>
