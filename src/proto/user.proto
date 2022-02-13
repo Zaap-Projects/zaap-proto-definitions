@@ -6,6 +6,7 @@ import "src/proto/entities/shared/query_params_users.proto";
 import "src/proto/entities/shared/delete_status.proto";
 import "src/proto/entities/shared/empty_value.proto";
 import "src/proto/entities/shared/metadata.proto";
+import "src/proto/entities/shared/public_access_token_response.proto";
 
 import "src/proto/entities/user_entity.proto";
 
@@ -18,10 +19,6 @@ service UserService {
     rpc CreateUser(CreateUserRequest) returns (UserEntity) {};
     rpc UpdateUser(UpdateUserRequest) returns (UserEntity) {};
     rpc DeleteUsers(IdParamsList) returns (DeleteStatus) {};
-}
-
-message GeneratePublicAccessTokenResponse {
-    string token = 1;
 }
 
 // create-user messages

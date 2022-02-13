@@ -24,3 +24,4 @@ export * as delete_status_definitions from './proto/_nestjs/src/proto/entities/s
 export * as message_response_definitions from './proto/_nestjs/src/proto/entities/shared/message_response';
 export * as permission_entity_definitions from './proto/_nestjs/src/proto/entities/shared/permission_entity';
 export * as metadata_definitions from './proto/_nestjs/src/proto/entities/shared/metadata';
+export * as public_access_token_response_definitions from './proto/_nestjs/src/proto/entities/shared/public_access_token_response';

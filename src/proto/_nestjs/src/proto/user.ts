@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { PhoneNumber } from '../../src/proto/entities/shared/phone_number';
 import { Metadata } from '../../src/proto/entities/shared/metadata';
 import { Metadata as Metadata1 } from '@grpc/grpc-js';
+import { GeneratePublicAccessTokenResponse } from '../../src/proto/entities/shared/public_access_token_response';
 import {
   UserEntity,
   UserEntityList,
@@ -19,10 +20,6 @@ import {
 import { QueryParamsUsers } from '../../src/proto/entities/shared/query_params_users';
 
 export const protobufPackage = 'userService';
-
-export interface GeneratePublicAccessTokenResponse {
-  token: string;
-}
 
 /** create-user messages */
 export interface CreateUserRequest {

@@ -11,6 +11,7 @@ import {
   MessageDlrReportResponse,
 } from '../../src/proto/entities/communication/message_entity';
 import { Metadata } from '@grpc/grpc-js';
+import { GeneratePublicAccessTokenResponse } from '../../src/proto/entities/shared/public_access_token_response';
 import { EmptyValue } from '../../src/proto/entities/shared/empty_value';
 
 export const protobufPackage = 'communicationService';
@@ -38,6 +39,11 @@ export interface MessageDlrReportRequest {
 export const COMMUNICATION_SERVICE_PACKAGE_NAME = 'communicationService';
 
 export interface CommunicationServiceClient {
+  generatePublicAccessToken(
+    request: EmptyValue,
+    metadata?: Metadata,
+  ): Observable<GeneratePublicAccessTokenResponse>;
+
   /** Message service */
 
   sendMessage(
@@ -57,6 +63,14 @@ export interface CommunicationServiceClient {
 }
 
 export interface CommunicationServiceController {
+  generatePublicAccessToken(
+    request: EmptyValue,
+    metadata?: Metadata,
+  ):
+    | Promise<GeneratePublicAccessTokenResponse>
+    | Observable<GeneratePublicAccessTokenResponse>
+    | GeneratePublicAccessTokenResponse;
+
   /** Message service */
 
   sendMessage(
@@ -87,6 +101,7 @@ export interface CommunicationServiceController {
 export function CommunicationServiceControllerMethods() {
   return function (constructor: Function) {
     const grpcMethods: string[] = [
+      'generatePublicAccessToken',
       'sendMessage',
       'messageUnitBalance',
       'messageDlrReport',
