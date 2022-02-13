@@ -3,10 +3,12 @@ syntax = "proto3";
 import "src/proto/entities/shared/phone_number.proto";
 import "src/proto/entities/communication/message_entity.proto";
 import "src/proto/entities/shared/empty_value.proto";
+import "src/proto/entities/shared/public_access_token_response.proto";
 
 package communicationService;
 
 service CommunicationService {
+    rpc GeneratePublicAccessToken(EmptyValue) returns (GeneratePublicAccessTokenResponse) {}
     // Message service
     rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
     rpc MessageUnitBalance(EmptyValue) returns (MessageUnitBalanceResponse) {}
