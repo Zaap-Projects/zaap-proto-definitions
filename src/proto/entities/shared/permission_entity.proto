@@ -1,6 +1,11 @@
 syntax = "proto3";
 
+message PermissionScope {
+    string scope = 1;
+    repeated string subPermissions = 2;
+}
+
 message PermissionEntity {
-    string name = 1;
-    repeated string permissions =2;
+    string application = 1;
+    repeated PermissionScope permissions = 2;
 }

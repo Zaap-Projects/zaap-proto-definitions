@@ -4,9 +4,14 @@ import * as Long from 'long';
 
 export const protobufPackage = '';
 
+export interface PermissionScope {
+  scope: string;
+  subPermissions: string[];
+}
+
 export interface PermissionEntity {
-  name: string;
-  permissions: string[];
+  application: string;
+  permissions: PermissionScope[];
 }
 
 export const _PACKAGE_NAME = '';
